@@ -1,0 +1,12 @@
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\HelloCross.dll
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\HelloCross.pdb
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\Xamarin.Forms.Core.dll
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\Xamarin.Forms.Platform.dll
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\Xamarin.Forms.Xaml.dll
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\Xamarin.Forms.Core.xml
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\Xamarin.Forms.Xaml.xml
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\obj\Debug\HelloCross.csprojResolveAssemblyReference.cache
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\obj\Debug\HelloCross.dll
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\obj\Debug\HelloCross.pdb
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\obj\Debug\HelloCross.dll.mdb
+e:\data\documents\visual studio 2015\Projects\HelloCross\HelloCross\HelloCross\bin\Debug\HelloCross.dll.mdb

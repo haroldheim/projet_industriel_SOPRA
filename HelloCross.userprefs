@@ -1,0 +1,12 @@
+﻿<Properties StartupConfiguration="{C8662A46-C973-42A2-8087-10D37FD9D048}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HelloCross/HelloCross/App.cs">
+    <Files>
+      <File FileName="HelloCross/HelloCross/App.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

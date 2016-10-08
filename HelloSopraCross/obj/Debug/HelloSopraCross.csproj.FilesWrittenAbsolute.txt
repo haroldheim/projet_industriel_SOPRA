@@ -1,5 +1,0 @@
-/Users/haroldheim/Projects/HelloSopraCross/HelloSopraCross/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
-/Users/haroldheim/Projects/HelloSopraCross/HelloSopraCross/bin/Debug/HelloSopraCross.dll.mdb
-/Users/haroldheim/Projects/HelloSopraCross/HelloSopraCross/bin/Debug/HelloSopraCross.dll
-/Users/haroldheim/Projects/HelloSopraCross/HelloSopraCross/obj/Debug/HelloSopraCross.dll
-/Users/haroldheim/Projects/HelloSopraCross/HelloSopraCross/obj/Debug/HelloSopraCross.dll.mdb
