@@ -1,0 +1,11 @@
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/ibtool/_BundleResourceWithLogicalName.items
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/actool/_PartialAppManifest.items
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/optimized/
+/Users/haroldheim/Projects/HelloSopraCross/iOS/bin/iPhoneSimulator/Debug/HelloSopraCross.iOS.exe.mdb
+/Users/haroldheim/Projects/HelloSopraCross/iOS/bin/iPhoneSimulator/Debug/HelloSopraCross.iOS.exe
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/HelloSopraCross.iOS.exe
+/Users/haroldheim/Projects/HelloSopraCross/iOS/obj/iPhoneSimulator/Debug/HelloSopraCross.iOS.exe.mdb
+/Users/haroldheim/Projects/HelloSopraCross/iOS/bin/iPhoneSimulator/Debug/HelloSopraCross.dll
+/Users/haroldheim/Projects/HelloSopraCross/iOS/bin/iPhoneSimulator/Debug/HelloSopraCross.dll.mdb
