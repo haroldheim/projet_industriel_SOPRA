@@ -1,0 +1,5 @@
+/Users/haroldheim/Projects/MapPin/MapPin/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
+/Users/haroldheim/Projects/MapPin/MapPin/bin/Debug/MapPin.dll.mdb
+/Users/haroldheim/Projects/MapPin/MapPin/bin/Debug/MapPin.dll
+/Users/haroldheim/Projects/MapPin/MapPin/obj/Debug/MapPin.dll
+/Users/haroldheim/Projects/MapPin/MapPin/obj/Debug/MapPin.dll.mdb

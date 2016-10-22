@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{67EF3044-A6C2-423A-B93B-9722688DE55B}|Default">
+  <MonoDevelop.Ide.ItemProperties.MapPin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F89B89E5-B641-4FC3-B092-AE68A51B99A7" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewController.cs">
+    <Files>
+      <File FileName="iOS/ViewController.cs" Line="29" Column="1" />
+      <File FileName="iOS/Main.cs" Line="14" Column="4" />
+      <File FileName="iOS/ViewController.designer.cs" Line="12" Column="3" />
+      <File FileName="iOS/AppDelegate.cs" Line="29" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MapPin.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+</Properties>

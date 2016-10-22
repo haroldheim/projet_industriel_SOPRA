@@ -1,0 +1,10 @@
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/ibtool/_BundleResourceWithLogicalName.items
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/actool/_PartialAppManifest.items
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/optimized/Settings.bundle/Root.plist
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/optimized/
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/bin/iPhoneSimulator/Debug/MapboxSampleiOS.exe.mdb
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/bin/iPhoneSimulator/Debug/MapboxSampleiOS.exe
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/MapboxSampleiOS.exe
+/Users/haroldheim/Downloads/mapboxsdk-4.1.1.1/samples/MapboxSampleiOS/MapboxSampleiOS/obj/iPhoneSimulator/Debug/MapboxSampleiOS.exe.mdb

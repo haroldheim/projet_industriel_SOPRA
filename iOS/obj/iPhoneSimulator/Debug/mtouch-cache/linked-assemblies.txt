@@ -1,0 +1,8 @@
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Xamarin.iOS.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/MapboxSDK.iOS.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/Mono.Dynamic.Interpreter.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/System.Xml.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/System.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/mscorlib.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/System.Core.dll
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/mtouch-cache/Link/MapboxSampleiOS.exe

@@ -1,0 +1,10 @@
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/actool/_PartialAppManifest.items
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/optimized/Settings.bundle/Root.plist
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/optimized/
+/Users/haroldheim/Projects/MapPin/iOS/bin/iPhoneSimulator/Debug/MapboxSampleiOS.exe.mdb
+/Users/haroldheim/Projects/MapPin/iOS/bin/iPhoneSimulator/Debug/MapboxSampleiOS.exe
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/MapboxSampleiOS.exe
+/Users/haroldheim/Projects/MapPin/iOS/obj/iPhoneSimulator/Debug/MapboxSampleiOS.exe.mdb
+/Users/haroldheim/Projects/MapPin/iOS/bin/iPhoneSimulator/Debug/MapboxSDK.iOS.dll
