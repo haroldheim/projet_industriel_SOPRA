@@ -1,4 +1,0 @@
-MapPin.Droid.MainActivity, MapPin.Droid;md5fca3d16001bd2b68c72cecb43c4dad5d.MainActivity
-MapPin.Droid.MainActivity, MapPin.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fca3d16001bd2b68c72cecb43c4dad5d.MainActivity
-MapPin.Droid.MainActivity;md5fca3d16001bd2b68c72cecb43c4dad5d.MainActivity
-mappin.droid.MainActivity;md5fca3d16001bd2b68c72cecb43c4dad5d.MainActivity
