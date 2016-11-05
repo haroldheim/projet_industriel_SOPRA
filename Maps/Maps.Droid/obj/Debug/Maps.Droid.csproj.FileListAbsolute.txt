@@ -49,3 +49,6 @@ C:\Users\Harold\Documents\Visual Studio 2015\Projects\Maps\Maps\Maps.Droid\obj\D
 C:\Users\Harold\Documents\Visual Studio 2015\Projects\Maps\Maps\Maps.Droid\obj\Debug\uploadflags.txt
 C:\Users\Harold\Documents\Visual Studio 2015\Projects\Maps\Maps\Maps.Droid\obj\Debug\Maps.Droid.dll.mdb
 C:\Users\Harold\Documents\Visual Studio 2015\Projects\Maps\Maps\Maps.Droid\bin\Debug\Maps.Droid.dll.mdb
+C:\Users\Harold\Source\Repos\projet_industriel_SOPRA\Maps\Maps.Droid\obj\Debug\Maps.Droid.csprojResolveAssemblyReference.cache
+C:\Users\Harold\Source\Repos\projet_industriel_SOPRA\Maps\Maps.Droid\obj\Debug\Maps.Droid.dll
+C:\Users\Harold\Source\Repos\projet_industriel_SOPRA\Maps\Maps.Droid\obj\Debug\Maps.Droid.pdb
