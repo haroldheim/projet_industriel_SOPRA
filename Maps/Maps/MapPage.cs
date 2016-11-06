@@ -22,11 +22,11 @@ namespace Maps
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(48.67, 6.15), Distance.FromMeters(10)));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(48.669075, 6.155275), Distance.FromMeters(500)));
 
             var pin = new Pin()
             {
-                Position = new Position(48.66, 6.15),
+                Position = new Position(48.669075, 6.155275),
                 Label = "TELECOM Nancy"
             };
 
