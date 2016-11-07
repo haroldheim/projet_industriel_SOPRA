@@ -12,11 +12,7 @@ namespace Maps
     {
         public App()
         {
-            var tabs = new TabbedPage();
-
-            tabs.Children.Add(new MapPage { Title = "Map" });
-
-            MainPage = tabs;
+            MainPage  = new NavigationPage(new MenuPage ());
         }
 
         protected override void OnStart()
