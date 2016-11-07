@@ -7,6 +7,7 @@ namespace Maps
     {
         public MenuPage()
         {
+
             var openMapButton = new Button { Text = "Open the map" };
             openMapButton.Clicked += OnMapPageClicked;
             var favoritesButton = new Button { Text = "Favorites homes" };
