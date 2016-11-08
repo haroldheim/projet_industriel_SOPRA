@@ -27,7 +27,7 @@ namespace Maps
             var pin = new Pin()
             {
                 Position = new Position(48.669075, 6.155275),
-                Label = "TELECOM Nancy"
+                Label = "Ecole TELECOM Nancy"
             };
 
             map.Pins.Add(pin);
