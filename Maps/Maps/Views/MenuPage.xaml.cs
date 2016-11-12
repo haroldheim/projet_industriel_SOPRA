@@ -13,7 +13,7 @@ namespace Maps
     public partial class MenuPage : ContentPage
     {
         public static MobileServiceClient MobileService = new MobileServiceClient("https://findurhome.azurewebsites.net");
-        TodoItem item = new TodoItem { Text = "Awesome item" };
+		BienImmo bien = new BienImmo { Titre = "Awesome item" };
 
         public MenuPage()
         {
@@ -21,15 +21,14 @@ namespace Maps
             
          }
 
-        async void OnMapButtonClicked (object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MapPage());
-        }
-        
-        async void OnClicked(object sender, EventArgs e)
-        {
-            await MobileService.GetTable<TodoItem>().InsertAsync(item);
-        }
+		async void OnMapButtonClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new MapPage());
+		}
 
+		async void OnListeClicked(object sender, EventArgs e)
+		{
+			await Navigation.PushAsync(new ListeBiens());
+		}
     }
 }
