@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 using Foundation;
 using UIKit;
@@ -23,6 +24,7 @@ namespace Maps.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.FormsMaps.Init();
             LoadApplication(new App());

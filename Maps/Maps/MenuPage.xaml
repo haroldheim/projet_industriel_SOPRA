@@ -5,7 +5,7 @@
              Title="findURhome">
   <StackLayout>
     <Button Text="Open the map" Clicked="OnMapButtonClicked"/>
-    <Button Text="Favorites homes" />
+    <Button Text="Favorites homes" Clicked="OnClicked"/>
     <Button Text="Search history" />
   </StackLayout>
 </ContentPage>

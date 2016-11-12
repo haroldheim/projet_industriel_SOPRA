@@ -12,8 +12,7 @@ namespace Maps
     {
         public App()
         {
-            MainPage = new NavigationPage(new MenuPage());
+            MainPage = new NavigationPage(new MenuPage());           
         }
-       
-    }
+    }   
 }
