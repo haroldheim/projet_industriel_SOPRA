@@ -3,6 +3,7 @@ namespace Maps
 {
 	public static class Constants
 	{
-		public static string ApplicationURL = @"https://findurhome.azurewebsites.net";
+		// Replace strings with your Azure Mobile App endpoint.
+		public static string ApplicationURL = @"https://findurhome.azurewebsites.net";	
 	}
 }

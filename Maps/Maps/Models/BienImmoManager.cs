@@ -12,13 +12,29 @@ namespace Maps
 		static BienImmoManager defaultInstance = new BienImmoManager();
 		MobileServiceClient client;
 
-		IMobileServiceTable<BienImmo> bienimmoTable;
+#if OFFLINE_SYNC_ENABLED
+        IMobileServiceSyncTable<TodoItem> todoTable;
+#else
+		IMobileServiceTable<BienImmo> bienTable;
+#endif
+
+		const string offlineDbPath = @"localstore.db";
 
 		private BienImmoManager()
 		{
 			this.client = new MobileServiceClient(Constants.ApplicationURL);
 
-			this.bienimmoTable = client.GetTable<BienImmo>();
+#if OFFLINE_SYNC_ENABLED
+            var store = new MobileServiceSQLiteStore(offlineDbPath);
+            store.DefineTable<TodoItem>();
+
+            //Initializes the SyncContext using the default IMobileServiceSyncHandler.
+            this.client.SyncContext.InitializeAsync(store);
+
+            this.todoTable = client.GetSyncTable<TodoItem>();
+#else
+			this.bienTable = client.GetTable<BienImmo>();
+#endif
 		}
 
 		public static BienImmoManager DefaultManager
@@ -38,14 +54,30 @@ namespace Maps
 			get { return client; }
 		}
 
-		public async Task<ObservableCollection<BienImmo>> GetBienImmoAsync(bool syncItems = false)
+		public bool IsOfflineEnabled
+		{
+			get { return bienTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<BienImmo>; }
+		}
+
+		public async Task<List<BienImmo>> GetBienImmo()
+		{
+			return new List<BienImmo>(await bienTable.ReadAsync());
+		}
+
+		public async Task<ObservableCollection<BienImmo>> GetTodoItemsAsync(bool syncItems = false)
 		{
 			try
 			{
-				IEnumerable<BienImmo> biens = await bienimmoTable
+#if OFFLINE_SYNC_ENABLED
+                if (syncItems)
+                {
+                    await this.SyncAsync();
+                }
+#endif
+				IEnumerable<BienImmo> items = await bienTable
 					.ToEnumerableAsync();
 
-				return new ObservableCollection<BienImmo>(biens);
+				return new ObservableCollection<BienImmo>(items);
 			}
 			catch (MobileServiceInvalidOperationException msioe)
 			{
@@ -58,17 +90,62 @@ namespace Maps
 			return null;
 		}
 
-		public async Task SaveTaskAsync(BienImmo bien)
+		public async Task SaveTaskAsync(BienImmo item)
 		{
-			if (bien.Id == null)
+			if (item.Id == null)
 			{
-				await bienimmoTable.InsertAsync(bien);
+				await bienTable.InsertAsync(item);
 			}
-			else 
+			else
 			{
-				await bienimmoTable.UpdateAsync(bien);
+				await bienTable.UpdateAsync(item);
 			}
-
 		}
+
+#if OFFLINE_SYNC_ENABLED
+        public async Task SyncAsync()
+        {
+            ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
+
+            try
+            {
+                await this.client.SyncContext.PushAsync();
+
+                await this.todoTable.PullAsync(
+                    //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
+                    //Use a different query name for each unique query in your program
+                    "allTodoItems",
+                    this.todoTable.CreateQuery());
+            }
+            catch (MobileServicePushFailedException exc)
+            {
+                if (exc.PushResult != null)
+                {
+                    syncErrors = exc.PushResult.Errors;
+                }
+            }
+
+            // Simple error/conflict handling. A real application would handle the various errors like network conditions,
+            // server conflicts and others via the IMobileServiceSyncHandler.
+            if (syncErrors != null)
+            {
+                foreach (var error in syncErrors)
+                {
+                    if (error.OperationKind == MobileServiceTableOperationKind.Update && error.Result != null)
+                    {
+                        //Update failed, reverting to server's copy.
+                        await error.CancelAndUpdateItemAsync(error.Result);
+                    }
+                    else
+                    {
+                        // Discard local change.
+                        await error.CancelAndDiscardItemAsync();
+                    }
+
+                    Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
+                }
+            }
+        }
+#endif
 	}
 }

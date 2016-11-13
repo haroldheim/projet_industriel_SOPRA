@@ -1,28 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 
 namespace Maps
 {
     public class BienImmo
     {
-        public string Id { get; set; }
+        string id;
+		string titre;
+		string description;
+		double coordLong;
+		double coordLat;
+		double prix;
+		double surface;
 
-        public string Titre { get; set; }
+		[JsonProperty(PropertyName = "id")]
+		public string Id
+		{
+			get { return id; }
+			set { id = value; }
+		}
 
-		public string Description { get; set; }
+		[JsonProperty(PropertyName = "titre")]
+		public string Titre
+		{
+			get { return titre; }
+			set { titre = value; }
+		}
 
-		public string TypeBien { get; set; }
+		[JsonProperty(PropertyName = "description")]
+		public string Description
+		{
+			get { return description; }
+			set { description = value; }
+		}
 
-		public double Prix { get; set; }
+		[JsonProperty(PropertyName = "coordlong")]
+		public double CoordLong
+		{
+			get { return coordLong; }
+			set { coordLong = value; }
+		}
 
-		public double Surface { get; set; }
+		[JsonProperty(PropertyName = "coordlat")]
+		public double CoordLat
+		{
+			get { return coordLat; }
+			set { coordLat = value; }
+		}
 
-		public double CoordLat { get; set; }
+		[JsonProperty(PropertyName = "prix")]
+		public double Prix
+		{
+			get { return prix; }
+			set { prix = value; }
+		}
 
-		public double CoordLong { get; set; }
+		[JsonProperty(PropertyName = "surface")]
+		public double Surface
+		{
+			get { return surface; }
+			set { surface = value; }
+		}
+
+		[Version]
+		public string Version { get; set; }
 
     }
 }
