@@ -1,9 +1,16 @@
-﻿using System;
+﻿//#define OFFLINE_SYNC_ENABLED
+
+using System;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Diagnostics;
+
+#if OFFLINE_SYNC_ENABLED
+using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
+using Microsoft.WindowsAzure.MobileServices.Sync;
+#endif
 
 namespace Maps
 {
@@ -13,7 +20,7 @@ namespace Maps
 		MobileServiceClient client;
 
 #if OFFLINE_SYNC_ENABLED
-        IMobileServiceSyncTable<TodoItem> todoTable;
+        IMobileServiceSyncTable<BienImmo> bienTable;
 #else
 		IMobileServiceTable<BienImmo> bienTable;
 #endif
@@ -26,12 +33,12 @@ namespace Maps
 
 #if OFFLINE_SYNC_ENABLED
             var store = new MobileServiceSQLiteStore(offlineDbPath);
-            store.DefineTable<TodoItem>();
+            store.DefineTable<BienImmo>();
 
             //Initializes the SyncContext using the default IMobileServiceSyncHandler.
             this.client.SyncContext.InitializeAsync(store);
 
-            this.todoTable = client.GetSyncTable<TodoItem>();
+            this.bienTable = client.GetSyncTable<BienImmo>();
 #else
 			this.bienTable = client.GetTable<BienImmo>();
 #endif
@@ -111,11 +118,11 @@ namespace Maps
             {
                 await this.client.SyncContext.PushAsync();
 
-                await this.todoTable.PullAsync(
+				await this.bienTable.PullAsync(
                     //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
                     //Use a different query name for each unique query in your program
-                    "allTodoItems",
-                    this.todoTable.CreateQuery());
+                    "allBienImmo",
+					this.bienTable.CreateQuery());
             }
             catch (MobileServicePushFailedException exc)
             {

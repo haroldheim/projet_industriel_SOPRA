@@ -13,6 +13,7 @@ namespace Maps
 		double coordLat;
 		double prix;
 		double surface;
+		string imageURL;
 
 		[JsonProperty(PropertyName = "id")]
 		public string Id
@@ -61,6 +62,13 @@ namespace Maps
 		{
 			get { return surface; }
 			set { surface = value; }
+		}
+
+		[JsonProperty(PropertyName = "imageURL")]
+		public string ImageURL
+		{
+			get { return imageURL; }
+			set { imageURL = value; }
 		}
 
 		[Version]

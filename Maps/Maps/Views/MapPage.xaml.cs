@@ -19,10 +19,7 @@ namespace Maps
         {
             InitializeComponent();
 
-
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(48.669075, 6.155275), Distance.FromMeters(500)));
-
-
         }
 
 		protected override async void OnAppearing()
