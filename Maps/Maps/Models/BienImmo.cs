@@ -9,6 +9,7 @@ namespace Maps
         string id;
 		string titre;
 		string description;
+		string type;
 		double coordLong;
 		double coordLat;
 		double prix;
@@ -34,6 +35,13 @@ namespace Maps
 		{
 			get { return description; }
 			set { description = value; }
+		}
+
+		[JsonProperty(PropertyName = "type")]
+		public string Type
+		{
+			get { return type; }
+			set { type = value; }
 		}
 
 		[JsonProperty(PropertyName = "coordlong")]
