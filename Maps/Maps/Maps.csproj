@@ -51,6 +51,9 @@
     <Compile Include="Views\ListeBiens.xaml.cs">
       <DependentUpon>ListeBiens.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchOptions.xaml.cs">
+      <DependentUpon>SearchOptions.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -123,6 +126,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ListeBiens.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchOptions.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
