@@ -24,7 +24,7 @@ namespace Maps
 
 		async void OnListeClicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new ListeBiens());
+			await Navigation.PushAsync(new SearchOptions());
 		}
     }
 }
