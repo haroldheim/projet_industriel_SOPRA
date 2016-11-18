@@ -54,6 +54,7 @@
     <Compile Include="Views\Favorites.xaml.cs">
       <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MapPageCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
