@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace Maps
 {
-	public partial class SearchOptions : ContentPage
+	public partial class SearchPage : ContentPage
 	{
-		public SearchOptions()
+		public SearchPage()
 		{
 
 			InitializeComponent();

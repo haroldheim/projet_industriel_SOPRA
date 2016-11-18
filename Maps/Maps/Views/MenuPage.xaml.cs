@@ -9,22 +9,11 @@ using Xamarin.Forms;
 
 namespace Maps
 {
-    public partial class MenuPage : ContentPage
+	public partial class MenuPage : TabbedPage
     {
-        public MenuPage()
-        {
-            InitializeComponent();
-            
-         }
-
-		async void OnMapButtonClicked(object sender, EventArgs e)
+		public MenuPage()
 		{
-			await Navigation.PushAsync(new MapPage());
-		}
-
-		async void OnListeClicked(object sender, EventArgs e)
-		{
-			await Navigation.PushAsync(new ListeBiens());
+			InitializeComponent();
 		}
     }
 }

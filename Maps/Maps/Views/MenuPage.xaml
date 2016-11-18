@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Maps.MenuPage"
-             Title="findURhome">
-  <StackLayout>
-    <Button Text="Open the map" Clicked="OnMapButtonClicked"/>
-    <Button Text="Favorites homes" />
-    <Button Text="Search history" />
-	<Button Text="Liste des biens" Clicked="OnListeClicked" />
-  </StackLayout>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Maps;assembly=Maps" x:Class="Maps.MenuPage">
+	<NavigationPage Title="Map">
+		<x:Arguments>
+			<local:MapPage />
+		</x:Arguments>
+	</NavigationPage>
+	<local:Favorites />
+</TabbedPage>

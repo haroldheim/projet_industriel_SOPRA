@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
 namespace Maps.ViewModel
@@ -7,8 +8,8 @@ namespace Maps.ViewModel
     {
         static ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            SimpleIoc.Default.Register<MainViewModel>();
+			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+			SimpleIoc.Default.Register<MainViewModel>();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Mcrosoft.Performance", 

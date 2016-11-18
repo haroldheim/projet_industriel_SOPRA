@@ -13,7 +13,6 @@ namespace Maps
 {
     public partial class MapPage : ContentPage
     {
-		BienImmoManager manager;
 
         public MapPage()
         {
@@ -22,29 +21,9 @@ namespace Maps
             MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(48.669075, 6.155275), Distance.FromMeters(500)));
         }
 
-		protected override async void OnAppearing()
+		async void OnSearchPageButtonClicked(object sendet, EventArgs e)
 		{
-			base.OnAppearing();
-
-			// Set syncItems to true in order to synchronize the data on startup when running in offline mode
-			await SetPins();
-		}
-
-		private async Task SetPins()
-		{
-			manager = BienImmoManager.DefaultManager;
-			List<BienImmo> listeBiens = await manager.GetBienImmo();
-
-			foreach (var biens in listeBiens)
-			{
-				var pin = new Pin()
-				{
-					Position = new Position(biens.CoordLat, biens.CoordLong),
-					Label = biens.Titre
-				};
-
-				MyMap.Pins.Add(pin);
-			}
+			await Navigation.PushAsync(new SearchPage());
 		}
     }
 }

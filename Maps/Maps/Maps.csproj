@@ -48,11 +48,11 @@
     </Compile>
     <Compile Include="Models\BienImmoManager.cs" />
     <Compile Include="Models\Constants.cs" />
-    <Compile Include="Views\ListeBiens.xaml.cs">
-      <DependentUpon>ListeBiens.xaml</DependentUpon>
+    <Compile Include="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchOptions.xaml.cs">
-      <DependentUpon>SearchOptions.xaml</DependentUpon>
+    <Compile Include="Views\Favorites.xaml.cs">
+      <DependentUpon>Favorites.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -125,10 +125,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListeBiens.xaml">
+    <EmbeddedResource Include="Views\SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchOptions.xaml">
+    <EmbeddedResource Include="Views\Favorites.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
