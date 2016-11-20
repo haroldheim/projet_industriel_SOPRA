@@ -6,4 +6,5 @@
 		</x:Arguments>
 	</NavigationPage>
 	<local:Favorites Icon="today.png"/>
+	<local:ListBiens Icon="today.png"/>
 </TabbedPage>

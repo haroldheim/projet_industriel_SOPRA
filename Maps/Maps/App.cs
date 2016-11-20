@@ -20,8 +20,11 @@ namespace Maps
 			}
 		}
 
+		public static BienManager BienManager { get; private set;}
+
 		public App()
 		{
+			BienManager = new BienManager(new RestService());
 			MainPage = new MenuPage();
 		}
     }   
