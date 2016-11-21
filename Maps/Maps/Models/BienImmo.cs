@@ -6,81 +6,24 @@ namespace Maps
 {
     public class BienImmo
     {
-        string id;
-		string titre;
-		string description;
-		string type;
-		double coordLong;
-		double coordLat;
-		double prix;
-		double surface;
-		string imageURL;
+		public int Id { get; set; }
 
-		[JsonProperty(PropertyName = "id")]
-		public string Id
-		{
-			get { return id; }
-			set { id = value; }
-		}
+		public string Titre { get; set; }
 
-		[JsonProperty(PropertyName = "titre")]
-		public string Titre
-		{
-			get { return titre; }
-			set { titre = value; }
-		}
+		public string Description { get; set ; }
 
-		[JsonProperty(PropertyName = "description")]
-		public string Description
-		{
-			get { return description; }
-			set { description = value; }
-		}
+		public string Type { get ; set ; }
 
-		[JsonProperty(PropertyName = "type")]
-		public string Type
-		{
-			get { return type; }
-			set { type = value; }
-		}
+		public double CoordLong { get ; set ; }
 
-		[JsonProperty(PropertyName = "coordlong")]
-		public double CoordLong
-		{
-			get { return coordLong; }
-			set { coordLong = value; }
-		}
+		public double CoordLat { get; set ; }
 
-		[JsonProperty(PropertyName = "coordlat")]
-		public double CoordLat
-		{
-			get { return coordLat; }
-			set { coordLat = value; }
-		}
+		public double Prix { get; set ; }
 
-		[JsonProperty(PropertyName = "prix")]
-		public double Prix
-		{
-			get { return prix; }
-			set { prix = value; }
-		}
+		public double Surface { get; set ; }
 
-		[JsonProperty(PropertyName = "surface")]
-		public double Surface
-		{
-			get { return surface; }
-			set { surface = value; }
-		}
+		public string Adresse { get; set ; }
 
-		[JsonProperty(PropertyName = "imageURL")]
-		public string ImageURL
-		{
-			get { return imageURL; }
-			set { imageURL = value; }
-		}
-
-		[Version]
-		public string Version { get; set; }
-
+		public byte[] Photo { get; set; }
     }
 }

@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Maps.ViewModel;
 using Xamarin.Forms;
 
 namespace Maps
 {
     public class App : Application
     {
-        public App()
-        {
-            MainPage = new NavigationPage(new MenuPage());           
-        }
+		private static ViewModelLocator _locator;
+
+		public static ViewModelLocator Locator
+		{
+			get
+			{
+				return _locator ?? (_locator = new ViewModelLocator());
+			}
+		}
+
+		public static BienManager BienManager { get; private set;}
+
+		public App()
+		{
+			BienManager = new BienManager(new RestService());
+			MainPage = new MenuPage();
+		}
     }   
 }

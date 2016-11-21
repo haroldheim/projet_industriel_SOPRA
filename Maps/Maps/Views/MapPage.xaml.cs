@@ -8,41 +8,44 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Plugin.Geolocator;
 
 namespace Maps
 {
     public partial class MapPage : ContentPage
     {
-		BienImmoManager manager;
 
         public MapPage()
         {
             InitializeComponent();
-
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(48.669075, 6.155275), Distance.FromMeters(500)));
-        }
-
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
-
-			// Set syncItems to true in order to synchronize the data on startup when running in offline mode
-			await SetPins();
+			MoveMapToCurrentPosition();
+			SetPinsOnMap();
 		}
 
-		private async Task SetPins()
+		async void OnSearchPageButtonClicked(object sender, EventArgs e)
 		{
-			manager = BienImmoManager.DefaultManager;
-			List<BienImmo> listeBiens = await manager.GetBienImmo();
+			await Navigation.PushAsync(new SearchPage());
 
-			foreach (var biens in listeBiens)
+		}
+
+
+		async void MoveMapToCurrentPosition()
+		{
+			var locator = CrossGeolocator.Current;
+			var position = await locator.GetPositionAsync(10000);
+			MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
+		}
+
+		async void SetPinsOnMap()
+		{
+			List<BienImmo> Biens = await App.BienManager.GetTaskAsync();
+			foreach (var bien in Biens)
 			{
 				var pin = new Pin()
 				{
-					Position = new Position(biens.CoordLat, biens.CoordLong),
-					Label = biens.Titre
+					Position = new Position(bien.CoordLong, bien.CoordLat),
+					Label = bien.Titre
 				};
-
 				MyMap.Pins.Add(pin);
 			}
 		}

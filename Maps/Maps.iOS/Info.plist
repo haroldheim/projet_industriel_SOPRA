@@ -22,6 +22,8 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>findMYhome</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.harold-heim.maps</string>
 	<key>CFBundleVersion</key>
@@ -47,5 +49,9 @@
 	<string></string>
 	<key>CFBundleName</key>
 	<string>findMYhome</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We are using your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Can we use your location</string>
 </dict>
 </plist>
