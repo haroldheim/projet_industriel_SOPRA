@@ -22,10 +22,24 @@ namespace Maps
 
 		public static BienManager BienManager { get; private set;}
 
+		static BienImmoDatabase database;
+
 		public App()
 		{
 			BienManager = new BienManager(new RestService());
 			MainPage = new MenuPage();
+		}
+
+		public static BienImmoDatabase Database
+		{
+			get
+			{
+				if (database == null)
+				{
+					database = new BienImmoDatabase();
+				}
+				return database;
+			}
 		}
     }   
 }

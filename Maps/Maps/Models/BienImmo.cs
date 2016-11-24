@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json;
+using SQLite;
 
 namespace Maps
 {
     public class BienImmo
     {
+		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 
 		public string Titre { get; set; }
