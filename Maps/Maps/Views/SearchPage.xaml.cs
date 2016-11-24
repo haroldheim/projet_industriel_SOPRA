@@ -29,7 +29,7 @@ namespace Maps
 						{
 							Label = "Acquisition",
 							Placeholder = "Achat/Location/Les deux",
-							Keyboard = Keyboard.Numeric
+							Keyboard = Keyboard.Text
 						}
 					},
 					new TableSection("Surface")
