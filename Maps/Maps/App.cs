@@ -24,12 +24,6 @@ namespace Maps
 
 		static BienImmoDatabase database;
 
-		public App()
-		{
-			BienManager = new BienManager(new RestService());
-			MainPage = new MenuPage();
-		}
-
 		public static BienImmoDatabase Database
 		{
 			get
@@ -41,5 +35,11 @@ namespace Maps
 				return database;
 			}
 		}
-    }   
+
+		public App()
+		{
+			BienManager = new BienManager(new RestService());
+			MainPage = new MenuPage();
+		}
+    }  
 }

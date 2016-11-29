@@ -15,8 +15,10 @@ namespace Maps
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-
-		//	listBiens.ItemsSource = App.Database.GetBiens();
+			BienImmo item = new BienImmo();
+			item.Titre = "DiZ";
+			App.Database.SaveBien(item);
+			listBiens.ItemsSource = App.Database.GetBiens();
 		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json;
 using SQLite;
 

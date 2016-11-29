@@ -13,6 +13,7 @@ namespace Maps
 
 		public BienImmoDatabase()
 		{
+			database = DependencyService.Get<ISQLite>().GetConnection();
 			database.CreateTable<BienImmo>();
 		}
 
