@@ -12,13 +12,10 @@ namespace Maps
 			InitializeComponent();
 		}
 
-		protected override void OnAppearing()
+		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-			BienImmo item = new BienImmo();
-			item.Titre = "DiZ";
-			App.Database.SaveBien(item);
-			listBiens.ItemsSource = App.Database.GetBiens();
+			listBiens.ItemsSource =  App.Database.GetBiensLight();
 		}
 	}
 }

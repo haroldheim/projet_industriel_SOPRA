@@ -224,6 +224,7 @@
     <AndroidResource Include="Resources\drawable\list.png" />
     <AndroidResource Include="Resources\drawable\maps.png" />
     <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\drawable\loupe.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

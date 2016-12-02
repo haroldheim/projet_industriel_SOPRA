@@ -15,6 +15,7 @@ namespace Maps
 		{
 			database = DependencyService.Get<ISQLite>().GetConnection();
 			database.CreateTable<BienImmo>();
+			database.CreateTable<BienImmoLight>();
 		}
 
 		public IEnumerable<BienImmo> GetBiens()
@@ -25,10 +26,19 @@ namespace Maps
 			}
 		}
 
-		public int SaveBien(BienImmo item)
+		public IEnumerable<BienImmoLight> GetBiensLight()
 		{
 			lock (locker)
 			{
+				return (from i in database.Table<BienImmoLight>() select i).ToList();
+			}
+		}
+
+		public int SaveBien(BienImmoLight item)
+		{
+			lock (locker)
+			{
+				
 				if (item.Id != 0)
 				{
 					database.Update(item);

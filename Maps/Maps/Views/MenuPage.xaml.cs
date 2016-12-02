@@ -16,11 +16,5 @@ namespace Maps
 			InitializeComponent();
 		}
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-
-			App.Database.GetBiens();
-		}
     }
 }

@@ -61,6 +61,9 @@
     <Compile Include="Data\BienManager.cs" />
     <Compile Include="Data\ISQLite.cs" />
     <Compile Include="Data\BienImmoDatabase.cs" />
+    <Compile Include="Models\Filtre.cs" />
+    <Compile Include="Models\BienImmoLight.cs" />
+    <Compile Include="Models\RequestGPSDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

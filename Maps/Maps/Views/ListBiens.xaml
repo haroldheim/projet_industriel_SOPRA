@@ -6,7 +6,7 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout Padding="50,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-							<Label Text="{Binding Id}" VerticalTextAlignment="Center" />
+							<Label Text="{Binding Titre}" VerticalTextAlignment="Center" />
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

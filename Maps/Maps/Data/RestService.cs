@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -11,7 +12,7 @@ namespace Maps
 	{
 		HttpClient client;
 
-		public List<BienImmo> Biens { get; private set; }
+		public List<BienImmoLight> Biens { get; private set; }
 
 		public RestService()
 		{
@@ -19,19 +20,25 @@ namespace Maps
 			client.MaxResponseContentBufferSize = 25600;
 		}
 
-		public async Task<List<BienImmo>> RefreshDataAsync()
+		public async Task<List<BienImmoLight>> RefreshDataAsync(RequestGPSDto requestGPSDto)
 		{
-			Biens = new List<BienImmo>();
+			Biens = new List<BienImmoLight>();
 
 			var uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
 			try
 			{
-				var response = await client.GetAsync(uri);
+				var json = JsonConvert.SerializeObject(requestGPSDto);
+				var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage response = null;
+
+				response = await client.PostAsync(uri, content);
+
 				if (response.IsSuccessStatusCode)
 				{
-					var content = await response.Content.ReadAsStringAsync();
-					Biens = JsonConvert.DeserializeObject<List<BienImmo>>(content);
+					var result = await response.Content.ReadAsStringAsync();
+					Biens = JsonConvert.DeserializeObject<List<BienImmoLight>>(result);
 				}
 			}
 			catch (Exception e)

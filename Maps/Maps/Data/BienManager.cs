@@ -13,9 +13,9 @@ namespace Maps
 			restService = service;
 		}
 
-		public Task<List<BienImmo>> GetTaskAsync()
+		public Task<List<BienImmoLight>> GetTaskAsync(RequestGPSDto req)
 		{
-			return restService.RefreshDataAsync();
+			return restService.RefreshDataAsync(req);
 		}
 
 	}

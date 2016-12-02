@@ -122,6 +122,7 @@
     <BundleResource Include="Resources\maps.png" />
     <BundleResource Include="Resources\star.png" />
     <BundleResource Include="Resources\list.png" />
+    <BundleResource Include="Resources\loupe.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
