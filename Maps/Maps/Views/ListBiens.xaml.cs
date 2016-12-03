@@ -12,11 +12,10 @@ namespace Maps
 			InitializeComponent();
 		}
 
-		protected override void OnAppearing()
+		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-
-		//	listBiens.ItemsSource = App.Database.GetBiens();
+			listBiens.ItemsSource =  App.Database.GetBiensLight();
 		}
 	}
 }

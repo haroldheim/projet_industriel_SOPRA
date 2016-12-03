@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,6 @@ namespace Maps
 
 		static BienImmoDatabase database;
 
-		public App()
-		{
-			BienManager = new BienManager(new RestService());
-			MainPage = new MenuPage();
-		}
-
 		public static BienImmoDatabase Database
 		{
 			get
@@ -41,5 +36,39 @@ namespace Maps
 				return database;
 			}
 		}
-    }   
+
+		public App()
+		{
+			BienManager = new BienManager(new RestService());
+			MainPage = new MenuPage();
+		}
+
+		protected override void OnStart()
+		{
+			refreshDatabase();
+		}
+
+		public async void refreshDatabase()
+		{
+			RequestGPSDto req = new RequestGPSDto();
+			Filtre filtre = new Filtre();
+			req.coordLat = 48.685424;
+			req.coordLong = 6.165575;
+			filtre.aireRecherche = 10000;
+			req.filtre = filtre;
+			List<BienImmoLight> listBiens = new List<BienImmoLight>();
+			listBiens = await App.BienManager.GetTaskAsync(req);
+
+			Debug.WriteLine("taille : " + listBiens.Count());
+
+			foreach (var item in listBiens)
+			{
+				Debug.WriteLine("item : " + item.Titre);
+
+				App.Database.SaveBien(item);
+
+			}
+			App.Database.displayTable();
+		}
+    }  
 }

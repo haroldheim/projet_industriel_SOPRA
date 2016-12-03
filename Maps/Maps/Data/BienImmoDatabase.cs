@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using SQLite;
 using Xamarin.Forms;
@@ -13,7 +14,9 @@ namespace Maps
 
 		public BienImmoDatabase()
 		{
+			database = DependencyService.Get<ISQLite>().GetConnection();
 			database.CreateTable<BienImmo>();
+			database.CreateTable<BienImmoLight>();
 		}
 
 		public IEnumerable<BienImmo> GetBiens()
@@ -24,19 +27,42 @@ namespace Maps
 			}
 		}
 
-		public int SaveBien(BienImmo item)
+		public IEnumerable<BienImmoLight> GetBiensLight()
 		{
 			lock (locker)
 			{
-				if (item.Id != 0)
-				{
-					database.Update(item);
-					return item.Id;
-				}
-				else {
-					return database.Insert(item);
-				}
+				return (from i in database.Table<BienImmoLight>() select i).ToList();
 			}
+		}
+
+		public BienImmoLight GetSingleBienLight(int id)
+		{
+			lock (locker)
+			{
+				return database.Table<BienImmoLight>().FirstOrDefault(u => u.Id == id);
+			}
+		}
+
+		public int SaveBien(BienImmoLight item)
+		{
+			lock (locker)
+			{
+				if (GetSingleBienLight(item.Id) != null)
+				{
+					Debug.WriteLine(item.Titre + " est deja dans la base");
+					return database.Update(item);
+				}
+				else
+					return database.Insert(item);
+			}
+		}
+
+		public void displayTable()
+		{
+			var query = database.Table<BienImmoLight>();
+
+			foreach (var stock in query)
+				Debug.WriteLine("Stock: " + stock.Titre);
 		}
 	}
 }
