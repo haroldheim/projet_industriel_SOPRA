@@ -209,6 +209,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="MainApplication.cs" />
+    <Compile Include="SQLite_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

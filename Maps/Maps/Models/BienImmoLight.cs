@@ -5,7 +5,7 @@ namespace Maps
 {
 	public class BienImmoLight
 	{
-		[PrimaryKey, AutoIncrement]
+		[PrimaryKey]
 		public int Id
 		{
 			get;
@@ -37,6 +37,12 @@ namespace Maps
 		}
 
 		public string typeBien
+		{
+			get;
+			set;
+		}
+
+		public string type
 		{
 			get;
 			set;

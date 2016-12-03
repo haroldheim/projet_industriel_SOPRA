@@ -50,7 +50,6 @@ namespace Maps
 			stack.Children.Add(map);
 			Content = stack;
 
-			SetPins();
 			MoveMapToCurrentPosition();
 		}
 
@@ -61,13 +60,12 @@ namespace Maps
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
 		}
 
-		async void SetPins()
+		protected async override void OnAppearing()
 		{
-			Debug.WriteLine("debug");
-			IEnumerable<BienImmoLight> listBienMap =  App.Database.GetBiensLight();
+			base.OnAppearing();
+			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
-				Debug.WriteLine("debug : " + item.Titre);
 				var position = new Position(item.coordLat, item.coordLong);
 				var pin = new Pin
 				{
@@ -77,6 +75,5 @@ namespace Maps
 				map.Pins.Add(pin);
 			}
 		}
-
     }
 }

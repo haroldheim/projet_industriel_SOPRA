@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using SQLite;
 using Xamarin.Forms;
@@ -34,20 +35,34 @@ namespace Maps
 			}
 		}
 
+		public BienImmoLight GetSingleBienLight(int id)
+		{
+			lock (locker)
+			{
+				return database.Table<BienImmoLight>().FirstOrDefault(u => u.Id == id);
+			}
+		}
+
 		public int SaveBien(BienImmoLight item)
 		{
 			lock (locker)
 			{
-				
-				if (item.Id != 0)
+				if (GetSingleBienLight(item.Id) != null)
 				{
-					database.Update(item);
-					return item.Id;
+					Debug.WriteLine(item.Titre + " est deja dans la base");
+					return database.Update(item);
 				}
-				else {
+				else
 					return database.Insert(item);
-				}
 			}
+		}
+
+		public void displayTable()
+		{
+			var query = database.Table<BienImmoLight>();
+
+			foreach (var stock in query)
+				Debug.WriteLine("Stock: " + stock.Titre);
 		}
 	}
 }
