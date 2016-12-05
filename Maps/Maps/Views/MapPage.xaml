@@ -2,8 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+		     xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="Maps.MapPage"
 			 Title="Recherche"
 			 >
-  
+	<StackLayout Margin="0,20,0,0" Spacing="0">
+		<StackLayout Orientation="Horizontal">
+			<SearchBar WidthRequest="250" Placeholder="Adresse">
+			</SearchBar>
+			<Button Text="Filtrer" Margin="10,0,0,0"/>
+		</StackLayout>
+		<maps:Map WidthRequest="960" HeightRequest="100"
+				x:Name="map"
+				IsShowingUser = "true"
+				VerticalOptions="FillAndExpand"
+		/>
+		  <cv:CarouselView HeightRequest="10" ItemsSource="{Binding BiensImmoLight}" x:Name="CarouselBiens">
+		    <cv:CarouselView.ItemTemplate>
+		      <DataTemplate>
+		        <Grid>
+		          <Grid.RowDefinitions>
+		            <RowDefinition Height="*"/>
+		            <RowDefinition Height="Auto"/>
+		          </Grid.RowDefinitions>
+		          <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding sousTitre}"/>
+		          <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+		            <Label TextColor="White" Text="{Binding Titre}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+		          </StackLayout>
+		        </Grid>
+		      </DataTemplate>
+		    </cv:CarouselView.ItemTemplate>
+		  </cv:CarouselView>
+	</StackLayout>
 </ContentPage>

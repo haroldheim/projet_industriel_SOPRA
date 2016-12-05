@@ -63,7 +63,7 @@ namespace Maps
 
 			foreach (var item in listBiens)
 			{
-				Debug.WriteLine("item : " + item.Titre);
+				Debug.WriteLine("item : " + item.sousTitre);
 
 				App.Database.SaveBien(item);
 
