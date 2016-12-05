@@ -17,6 +17,7 @@ namespace Maps
 		Map map;
 		SearchBar searchBar;
 		Button filtreButton;
+		CarouselView carouselView;
 
         public MapPage()
         {
@@ -51,6 +52,7 @@ namespace Maps
 			Content = stack;
 
 			MoveMapToCurrentPosition();
+
 		}
 
 		async void MoveMapToCurrentPosition()
@@ -60,12 +62,13 @@ namespace Maps
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
 		}
 
-		protected async override void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
+				Debug.WriteLine(listBienMap.Count());
 				var position = new Position(item.coordLat, item.coordLong);
 				var pin = new Pin
 				{
