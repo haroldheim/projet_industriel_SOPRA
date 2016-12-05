@@ -64,6 +64,7 @@
     <Compile Include="Models\Filtre.cs" />
     <Compile Include="Models\BienImmoLight.cs" />
     <Compile Include="Models\RequestGPSDto.cs" />
+    <Compile Include="ViewModel\MapPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

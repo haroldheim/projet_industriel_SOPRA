@@ -14,43 +14,10 @@ namespace Maps
 {
     public partial class MapPage : ContentPage
     {
-		Map map;
-		SearchBar searchBar;
-		Button filtreButton;
-		CarouselView carouselView;
-
         public MapPage()
         {
             InitializeComponent();
-
-			//créé la map
-			map = new Map
-			{
-				IsShowingUser = true,
-				HeightRequest = 100,
-				WidthRequest = 960,
-				VerticalOptions = LayoutOptions.FillAndExpand
-			};
-
-			//créé la barre de recherche et filtre
-			searchBar = new SearchBar
-			{
-				Placeholder = "Adresse",
-				WidthRequest = 250
-			};
-			filtreButton = new Button { Text = "Filtrer" , Margin = new Thickness(10,0,0,0)};
-
-			var segments = new StackLayout
-			{
-				Orientation = StackOrientation.Horizontal,
-				Children = { searchBar, filtreButton }
-			};
-
-			var stack = new StackLayout { Spacing = 0, Margin = new Thickness(0, 20, 0, 0),};
-			stack.Children.Add(segments);
-			stack.Children.Add(map);
-			Content = stack;
-
+			BindingContext = new MapPageViewModel();
 			MoveMapToCurrentPosition();
 
 		}
