@@ -28,7 +28,7 @@ namespace Maps
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
 		}
 
-		protected async override void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
@@ -42,6 +42,11 @@ namespace Maps
 				};
 				map.Pins.Add(pin);
 			}
+		}
+
+		async void  OnFiltreClicked(object sender, EventArgs args)
+		{
+			await Navigation.PushAsync(new SearchPage());
 		}
     }
 }

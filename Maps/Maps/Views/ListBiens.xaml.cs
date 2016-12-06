@@ -12,7 +12,7 @@ namespace Maps
 			InitializeComponent();
 		}
 
-		protected async override void OnAppearing()
+		protected  override void OnAppearing()
 		{
 			base.OnAppearing();
 			listBiens.ItemsSource =  App.Database.GetBiensLight();

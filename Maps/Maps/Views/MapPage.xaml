@@ -6,11 +6,11 @@
              x:Class="Maps.MapPage"
 			 Title="Recherche"
 			 >
-	<StackLayout Margin="0,20,0,0" Spacing="0">
+	<StackLayout Spacing="0">
 		<StackLayout Orientation="Horizontal">
 			<SearchBar WidthRequest="250" Placeholder="Adresse">
 			</SearchBar>
-			<Button Text="Filtrer" Margin="10,0,0,0"/>
+			<Button Text="Filtrer" Margin="10,0,0,0" Clicked="OnFiltreClicked"/>
 		</StackLayout>
 		<maps:Map WidthRequest="960" HeightRequest="100"
 				x:Name="map"
