@@ -45,5 +45,10 @@ namespace Maps
 				map.Pins.Add(pin);
 			}
 		}
+
+		async void  OnFiltreClicked(object sender, EventArgs args)
+		{
+			await Navigation.PushAsync(new SearchPage());
+		}
     }
 }
