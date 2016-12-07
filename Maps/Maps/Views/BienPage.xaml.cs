@@ -7,10 +7,9 @@ namespace Maps
 {
 	public partial class BienPage : ContentPage
 	{
-		public BienPage(string titre)
+		public BienPage()
 		{
 			InitializeComponent();
-			bien.Text = titre;
 		}
 
 		async void OnRetourClicked(object sender, EventArgs args)

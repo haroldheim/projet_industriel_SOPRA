@@ -4,6 +4,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 		     xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="Maps.MapPage"
+			 Title="Recherche"
 			 >
 	<StackLayout Spacing="0">
 		<StackLayout Orientation="Horizontal">

@@ -53,5 +53,11 @@ namespace Maps
 			get;
 			set;
 		}
+
+		public double surface
+		{
+			get;
+			set;
+		}
 	}
 }

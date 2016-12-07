@@ -46,7 +46,6 @@ namespace Maps
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
-				Debug.WriteLine(listBienMap.Count());
 				var position = new Position(item.coordLat, item.coordLong);
 				var pin = new Pin
 				{
@@ -66,7 +65,17 @@ namespace Maps
 
 		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
 
-			await Navigation.PushModalAsync(new BienPage(current.ToString()));
+			BienImmo bienRest = new BienImmo();
+			bienRest = await App.BienManager.GetBienAsync(current);
+			App.Database.SaveBienDetailed(bienRest);
+
+			BienImmo bienBdd = new BienImmo();
+			bienBdd = App.Database.GetSingleBien(current);
+
+			//Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
+			var bienPage = new BienPage();
+			bienPage.BindingContext = bienBdd;
+			await Navigation.PushModalAsync(bienPage);
 		}
     }
 }

@@ -7,6 +7,6 @@ namespace Maps
 	public interface IRestService
 	{
 		Task<List<BienImmoLight>> RefreshDataAsync(RequestGPSDto requestGPSDto);
-
+		Task<BienImmo> GetBienImmo(int id);
 	}
 }

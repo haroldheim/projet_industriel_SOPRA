@@ -5,6 +5,6 @@ namespace Maps
 	{
 		public static string RestUrl = "http://findmyhome.westeurope.cloudapp.azure.com/api/getitemswithgps";
 
-		public static string RestUrlGetBiens = "http://findmyhome.westeurope.cloudapp.azure.com/api/getitemdetailed";
+		public static string RestUrlGetBiens = "http://findmyhome.westeurope.cloudapp.azure.com/api/getitemdetailed/";
 	}
 }

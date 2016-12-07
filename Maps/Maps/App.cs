@@ -59,11 +59,11 @@ namespace Maps
 			List<BienImmoLight> listBiens = new List<BienImmoLight>();
 			listBiens = await App.BienManager.GetTaskAsync(req);
 
-			Debug.WriteLine("taille : " + listBiens.Count());
+			//Debug.WriteLine("taille : " + listBiens.Count());
 
 			foreach (var item in listBiens)
 			{
-				Debug.WriteLine("item : " + item.sousTitre);
+				//Debug.WriteLine("item : " + item.sousTitre);
 
 				App.Database.SaveBien(item);
 

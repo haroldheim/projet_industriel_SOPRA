@@ -36,6 +36,14 @@ namespace Maps
 			}
 		}
 
+		public BienImmo GetSingleBien(int id)
+		{
+			lock (locker)
+			{
+				return database.Table<BienImmo>().FirstOrDefault(u => u.Id == id);
+			}
+		}
+
 		public BienImmoLight GetSingleBienLight(int id)
 		{
 			lock (locker)
@@ -50,7 +58,21 @@ namespace Maps
 			{
 				if (GetSingleBienLight(item.Id) != null)
 				{
-					Debug.WriteLine(item.Titre + " est deja dans la base");
+					//Debug.WriteLine(item.Titre + " est deja dans la base");
+					return database.Update(item);
+				}
+				else
+					return database.Insert(item);
+			}
+		}
+
+		public int SaveBienDetailed(BienImmo item)
+		{
+			lock (locker)
+			{
+				if (GetSingleBien(item.Id) != null)
+				{
+					//Debug.WriteLine(item.Titre + " est deja dans la base");
 					return database.Update(item);
 				}
 				else
@@ -62,8 +84,8 @@ namespace Maps
 		{
 			var query = database.Table<BienImmoLight>();
 
-			foreach (var stock in query)
-				Debug.WriteLine("Stock: " + stock.Titre);
+			/*foreach (var stock in query)
+				Debug.WriteLine("Stock: " + stock.Titre);*/
 		}
 	}
 }

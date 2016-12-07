@@ -13,6 +13,7 @@ namespace Maps
 		HttpClient client;
 
 		public List<BienImmoLight> Biens { get; private set; }
+		public BienImmo Bien { get; set; }
 
 		public RestService()
 		{
@@ -47,6 +48,29 @@ namespace Maps
 			}
 
 			return Biens;
+		}
+
+		public async Task<BienImmo> GetBienImmo(int id)
+		{
+			Bien = new BienImmo();
+
+			var uri = new Uri(string.Format(Constants.RestUrlGetBiens + id, string.Empty));
+
+			try
+			{
+				var response = await client.GetAsync(uri);
+				if (response.IsSuccessStatusCode)
+				{
+					var content = await response.Content.ReadAsStringAsync();
+					Bien = JsonConvert.DeserializeObject<BienImmo>(content);
+				}
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(@"ERROR {0}", ex.Message);
+			}
+
+			return Bien;
 		}
 	}
 }

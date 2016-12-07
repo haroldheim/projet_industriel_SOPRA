@@ -5,8 +5,8 @@
 
 			<Button Text="Retour" Margin="10,0,0,0" Clicked="OnRetourClicked"/>
 
-				<Label Text="Id bien = " />
-				<Label x:Name="bien" />
+				<Label Text="email bien = " />
+				<Label Text="{Binding Email}" />
 			</StackLayout>
 	</ContentPage.Content>
 	<ContentPage.Padding>

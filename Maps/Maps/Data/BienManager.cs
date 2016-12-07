@@ -18,5 +18,9 @@ namespace Maps
 			return restService.RefreshDataAsync(req);
 		}
 
+		public Task<BienImmo> GetBienAsync(int id)
+		{
+			return restService.GetBienImmo(id);
+		}
 	}
 }
