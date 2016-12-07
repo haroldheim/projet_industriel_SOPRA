@@ -14,12 +14,23 @@ namespace Maps
 {
     public partial class MapPage : ContentPage
     {
+		int current;
+		public IEnumerable<BienImmoLight> BiensImmoLight { get; set; }
+
         public MapPage()
         {
             InitializeComponent();
 			BindingContext = new MapPageViewModel();
+			BiensImmoLight = App.Database.GetBiensLight();
+
+			current = BiensImmoLight.First().Id;
 			MoveMapToCurrentPosition();
 
+			CarouselBiens.ItemSelected += (sender, args) =>
+			{
+			    var zoo = args.SelectedItem as BienImmoLight;
+				current = zoo.Id;
+			};
 		}
 
 		async void MoveMapToCurrentPosition()
@@ -48,7 +59,14 @@ namespace Maps
 
 		async void  OnFiltreClicked(object sender, EventArgs args)
 		{
-			await Navigation.PushAsync(new SearchPage());
+			
+			var filtrePage = new SearchPage();
+			await Navigation.PushModalAsync(filtrePage);
+		}
+
+		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
+
+			await Navigation.PushModalAsync(new BienPage(current.ToString()));
 		}
     }
 }
