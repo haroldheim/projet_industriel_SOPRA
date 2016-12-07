@@ -17,10 +17,11 @@ namespace Maps
 		int current;
 		public IEnumerable<BienImmoLight> BiensImmoLight { get; set; }
 
-        public MapPage()
+		public MapPage()
         {
             InitializeComponent();
 			BindingContext = new MapPageViewModel();
+
 			BiensImmoLight = App.Database.GetBiensLight();
 
 			current = BiensImmoLight.First().Id;
@@ -64,7 +65,7 @@ namespace Maps
 		}
 
 		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
-
+			
 			BienImmo bienRest = new BienImmo();
 			bienRest = await App.BienManager.GetBienAsync(current);
 			App.Database.SaveBienDetailed(bienRest);
@@ -76,6 +77,7 @@ namespace Maps
 			var bienPage = new BienPage();
 			bienPage.BindingContext = bienBdd;
 			await Navigation.PushModalAsync(bienPage);
+
 		}
     }
 }
