@@ -11,6 +11,9 @@ namespace Maps
 	public partial class SearchPage : ContentPage
 	{
 		Label label;
+		double StepValue;
+		Slider SliderMain;
+
 		public SearchPage()
 		{
 			Button b = new Button
@@ -64,14 +67,16 @@ namespace Maps
 			grid2.Children.Add(bottomLeft2, 0, 1);
 			grid2.Children.Add(bottomRight2, 1, 1);
 
-			Slider slider = new Slider
+			StepValue = 1.0;
+
+			SliderMain = new Slider
 			{
-				Minimum = 0,
-				Maximum = 10,
-				Margin = new Thickness(20, 0, 20, 0),
-				Value = 5
+				Maximum = 10.0f,
+				Minimum = 1.0f,
+				Value = 5.0f,
+				Margin = new Thickness(20, 0, 20, 0)
 			};
-			slider.ValueChanged += OnSliderValueChanged;
+			SliderMain.ValueChanged += OnSliderValueChanged;
 
 			label = new Label
 			{
@@ -110,16 +115,16 @@ namespace Maps
 							new Label {
 								Text="Appartement",
 								VerticalOptions = LayoutOptions.CenterAndExpand,
-								XAlign = TextAlignment.End,
-								YAlign = TextAlignment.Center,
+								HorizontalTextAlignment = TextAlignment.End,
+								VerticalTextAlignment = TextAlignment.Center,
 								Margin = new Thickness(0, 0, 10, 0)
 							},
 							ccbMaison,
 							new Label {
 								Text="Maison",
 								VerticalOptions = LayoutOptions.CenterAndExpand,
-						XAlign = TextAlignment.End,
-						YAlign = TextAlignment.Center
+								HorizontalTextAlignment = TextAlignment.End,
+								VerticalTextAlignment = TextAlignment.Center
 							}
 						}
 					},
@@ -145,7 +150,7 @@ namespace Maps
 							},
 							 label
 						}
-					},slider
+					},SliderMain
 					,
 					b2
 				}
@@ -165,7 +170,11 @@ namespace Maps
 
 		void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
 		{
-			label.Text = String.Format("{0:F1} km", e.NewValue);
+			var newStep = Math.Round(e.NewValue / StepValue);
+
+			SliderMain.Value = newStep * StepValue;
+
+			label.Text = String.Format("{0} km", SliderMain.Value);
 		}
 	}
 }
