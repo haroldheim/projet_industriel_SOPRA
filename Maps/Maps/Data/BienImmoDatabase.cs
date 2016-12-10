@@ -84,8 +84,8 @@ namespace Maps
 		{
 			var query = database.Table<BienImmoLight>();
 
-			/*foreach (var stock in query)
-				Debug.WriteLine("Stock: " + stock.Titre);*/
+			foreach (var stock in query)
+				Debug.WriteLine("Stock: " + stock.Titre);
 		}
 	}
 }

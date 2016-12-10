@@ -20,11 +20,11 @@ namespace Maps
 		public MapPage()
         {
             InitializeComponent();
-			BindingContext = new MapPageViewModel();
-
-			BiensImmoLight = App.Database.GetBiensLight();
-
-			current = BiensImmoLight.First().Id;
+			//BiensImmoLight = App.Database.GetBiensLight();
+			//Debug.WriteLine("taille de la liste :D " + BiensImmoLight.Count());
+			//BindingContext = new MapPageViewModel();
+			NavigationPage.SetHasNavigationBar(this, false);
+			//current = BiensImmoLight.First().Id;
 			MoveMapToCurrentPosition();
 
 			CarouselBiens.ItemSelected += (sender, args) =>
@@ -41,9 +41,16 @@ namespace Maps
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
 		}
 
-		protected override void OnAppearing()
+		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
+			RequestGPSDto req = new RequestGPSDto();
+			Filtre filtre = new Filtre();
+			req.coordLat = 48.685424;
+			req.coordLong = 6.165575;
+			filtre.aireRecherche = 10000;
+			req.filtre = filtre;
+			CarouselBiens.ItemsSource =  App.Database.GetBiensLight();
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
@@ -64,6 +71,8 @@ namespace Maps
 			await Navigation.PushModalAsync(filtrePage);
 		}
 
+
+
 		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
 			
 			BienImmo bienRest = new BienImmo();
@@ -71,12 +80,13 @@ namespace Maps
 			App.Database.SaveBienDetailed(bienRest);
 
 			BienImmo bienBdd = new BienImmo();
+			Debug.WriteLine("current :D " + current);
 			bienBdd = App.Database.GetSingleBien(current);
 
 			//Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage();
 			bienPage.BindingContext = bienBdd;
-			await Navigation.PushModalAsync(bienPage);
+			await Navigation.PushAsync(bienPage);
 
 		}
     }

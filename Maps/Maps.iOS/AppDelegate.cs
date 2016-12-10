@@ -6,7 +6,6 @@ using System.IO;
 using Foundation;
 using UIKit;
 
-
 namespace Maps.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -26,6 +25,7 @@ namespace Maps.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             global::Xamarin.FormsMaps.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
