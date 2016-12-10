@@ -50,7 +50,7 @@ namespace Maps
 			req.coordLong = 6.165575;
 			filtre.aireRecherche = 10000;
 			req.filtre = filtre;
-			CarouselBiens.ItemsSource =  await App.BienManager.GetTaskAsync(req);
+			CarouselBiens.ItemsSource =  App.Database.GetBiensLight();
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
