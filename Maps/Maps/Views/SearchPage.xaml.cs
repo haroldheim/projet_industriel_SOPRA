@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,16 @@ namespace Maps
 				Text = "Valider"
 			};
 			b2.Clicked += OnValiderClicked;
+
+			CustomCheckbox ccbMaison = new CustomCheckbox
+			{
+				Checked = false,
+			};
+
+			CustomCheckbox ccbAppartement = new CustomCheckbox
+			{
+				Checked = false,
+			};
 
 			var grid = new Grid { Margin = new Thickness(5, 10, 5, 10)};
 			grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -84,10 +95,33 @@ namespace Maps
 							 b
 						}
 					},
+
 					new Label {
 						Text="Type de bien",
 						FontAttributes=FontAttributes.Bold,
 						Margin = new Thickness(5, 10, 5, 10)
+					},
+					new StackLayout{
+						Orientation= StackOrientation.Horizontal,
+						VerticalOptions = LayoutOptions.Center,
+						HorizontalOptions = LayoutOptions.Center,
+						Children={
+							ccbAppartement,
+							new Label {
+								Text="Appartement",
+								VerticalOptions = LayoutOptions.CenterAndExpand,
+								XAlign = TextAlignment.End,
+								YAlign = TextAlignment.Center,
+								Margin = new Thickness(0, 0, 10, 0)
+							},
+							ccbMaison,
+							new Label {
+								Text="Maison",
+								VerticalOptions = LayoutOptions.CenterAndExpand,
+						XAlign = TextAlignment.End,
+						YAlign = TextAlignment.Center
+							}
+						}
 					},
 					new Label {
 						Text="Surface",

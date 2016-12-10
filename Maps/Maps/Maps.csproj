@@ -68,6 +68,7 @@
     <Compile Include="Views\BienPage.xaml.cs">
       <DependentUpon>BienPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CustomCheckbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

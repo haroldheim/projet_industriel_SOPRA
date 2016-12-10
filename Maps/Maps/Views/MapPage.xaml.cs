@@ -19,14 +19,12 @@ namespace Maps
 
 		public MapPage()
         {
-            InitializeComponent();
-			//BiensImmoLight = App.Database.GetBiensLight();
-			//Debug.WriteLine("taille de la liste :D " + BiensImmoLight.Count());
-			//BindingContext = new MapPageViewModel();
-			NavigationPage.SetHasNavigationBar(this, false);
-			//current = BiensImmoLight.First().Id;
-			MoveMapToCurrentPosition();
+			Debug.WriteLine("MapPage()");
 
+            InitializeComponent();
+
+			NavigationPage.SetHasNavigationBar(this, false);
+			MoveMapToCurrentPosition();
 			CarouselBiens.ItemSelected += (sender, args) =>
 			{
 			    var zoo = args.SelectedItem as BienImmoLight;
@@ -43,6 +41,8 @@ namespace Maps
 
 		protected async override void OnAppearing()
 		{
+			Debug.WriteLine("OnAppearing()");
+
 			base.OnAppearing();
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
@@ -50,7 +50,7 @@ namespace Maps
 			req.coordLong = 6.165575;
 			filtre.aireRecherche = 10000;
 			req.filtre = filtre;
-			CarouselBiens.ItemsSource =  App.Database.GetBiensLight();
+			CarouselBiens.ItemsSource =  await App.BienManager.GetTaskAsync(req);
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
 			foreach (var item in listBienMap)
 			{
@@ -83,7 +83,7 @@ namespace Maps
 			Debug.WriteLine("current :D " + current);
 			bienBdd = App.Database.GetSingleBien(current);
 
-			//Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
+			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage();
 			bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
