@@ -28,11 +28,37 @@ namespace Maps
 			}
 		}
 
-		public IEnumerable<BienImmoLight> GetBiensLight()
+		public IEnumerable<BienImmoLight> GetBiensLight(RequestGPSDto req)
 		{
+			String isMaison = "";
+			String isAppartement = "";
+
+			if (req.filtre.isMaison)
+				isMaison = "Maison";
+			if (req.filtre.isAppartement)
+				isAppartement = "Appart";
+
+			double earthRadius = 6378137;
+			double latPlus = req.coordLat + (req.filtre.aireRecherche / earthRadius) * (180 / Math.PI);
+			double latMoins = req.coordLat - (req.filtre.aireRecherche / earthRadius) * (180 / Math.PI);
+			double longMoins = req.coordLong - (req.filtre.aireRecherche / (earthRadius * Math.Cos(Math.PI * req.coordLat / 180))) * (180 / Math.PI);
+			double longPlus = req.coordLong + (req.filtre.aireRecherche / (earthRadius * Math.Cos(Math.PI * req.coordLat / 180))) * (180 / Math.PI);
+
+
+			Debug.WriteLine("reqfiltre isMaison : " + req.filtre.surfaceMin);
+			Debug.WriteLine("reqfiltre isAppart : " + req.filtre.surfaceMax);
 			lock (locker)
 			{
-				return (from i in database.Table<BienImmoLight>() select i).ToList();
+				return (from i in database.Table<BienImmoLight>().Where(u=>(u.typeBien == isMaison
+				                                                            || u.typeBien == isAppartement)
+				                                                        && u.coordLat >= latMoins
+				                                                        && u.coordLat <= latPlus
+				                                                        && u.coordLong >= longMoins
+				                                                        && u.coordLong <= longPlus
+				                                                        && u.surface >= req.filtre.surfaceMin
+				                                                        && u.surface <= req.filtre.surfaceMax
+				                                                        && u.prix >= req.filtre.prixMin
+				                                                        && u.prix <= req.filtre.prixMax) select i).ToList();
 			}
 		}
 

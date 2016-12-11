@@ -45,31 +45,41 @@ namespace Maps
 
 			base.OnAppearing();
 			Debug.WriteLine("aireRecherche : " + Settings.aireRecherche);
-
+			var locator = CrossGeolocator.Current;
+			var position = await locator.GetPositionAsync(10000);
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
-			req.coordLat = 48.685424;
-			req.coordLong = 6.165575;
-			filtre.aireRecherche = 3000;
+			req.coordLat = position.Latitude;
+			req.coordLong = position.Longitude;
+			filtre.aireRecherche = Settings.aireRecherche * 1000;
+			filtre.prixMax = Settings.prixMax;
+			filtre.prixMin = Settings.prixMin;
+			filtre.surfaceMax = Settings.surfaceMax;
+			filtre.surfaceMin = Settings.surfaceMin;
+			filtre.isMaison = Settings.isMaison;
+			filtre.isAppartement = Settings.isAppartement;
 			req.filtre = filtre;
-			CarouselBiens.ItemsSource =  App.Database.GetBiensLight();
-			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
-
+			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
 			map.Pins.Clear();
-			foreach (var item in listBienMap)
+			if (listBienMap.Count() > 0)
 			{
-				var position = new Position(item.coordLat, item.coordLong);
-				var pin = new Pin
+				CarouselBiens.ItemsSource = listBienMap;
+
+				foreach (var item in listBienMap)
 				{
-					Position = position,
-					Label = item.Titre
-				};
+					var positionPin = new Position(item.coordLat, item.coordLong);
+					var pin = new Pin
+					{
+						Position = positionPin,
+						Label = item.Titre,
+						Address = item.sousTitre
+					};
 
-				map.Pins.Add(pin);
-				pin.Clicked += (sender, e) => OnPinClicked(item.Id);
+					map.Pins.Add(pin);
+					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
 
+				}
 			}
-
 		}
 
 		async void  OnFiltreClicked(object sender, EventArgs args)

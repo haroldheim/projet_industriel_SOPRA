@@ -3,8 +3,8 @@
 	<ContentPage.Content>
 		<StackLayout Padding="5" Spacing="0">
 				<Label Text="{Binding Titre}" FontAttributes="Bold"/>
-				<Label Text="{Binding Email}" FontSize="11" Margin="0,0,0,15"/>
-				<Image Source="{Binding Soustitre}" HeightRequest="150" Margin="0,0,0,15"/>
+				<Label Text="{Binding Soustitre}" FontSize="11" Margin="0,0,0,15"/>
+				<Image Source="{Binding Photo}" HeightRequest="150" Margin="0,0,0,15"/>
 				<Label Text="Description du bien" FontAttributes="Bold"/>
 				<StackLayout Orientation="Horizontal">
 					<Label Text="{Binding Surface}"  FontSize="11"/>

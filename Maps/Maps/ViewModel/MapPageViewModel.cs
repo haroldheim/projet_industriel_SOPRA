@@ -14,7 +14,6 @@ namespace Maps
 
 		public MapPageViewModel()
 		{
-			BiensImmoLight = App.Database.GetBiensLight();
 		}
 	}
 }

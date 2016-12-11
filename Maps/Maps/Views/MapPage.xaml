@@ -25,7 +25,7 @@
 	            <RowDefinition Height="*"/>
 	            <RowDefinition Height="Auto"/>
 	          </Grid.RowDefinitions>
-	          <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding sousTitre}">
+	          <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding photo}">
 			  </Image>
 	          <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="7">
 	            <Label TextColor="White" Text="{Binding typeTitre}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>

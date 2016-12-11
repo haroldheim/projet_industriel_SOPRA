@@ -15,7 +15,6 @@ namespace Maps
 		protected  override void OnAppearing()
 		{
 			base.OnAppearing();
-			listBiens.ItemsSource =  App.Database.GetBiensLight();
 		}
 	}
 }

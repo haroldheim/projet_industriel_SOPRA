@@ -44,5 +44,17 @@ namespace Maps
 			get;
 			set;
 		}
+
+		public bool isMaison
+		{
+			get;
+			set;
+		}
+
+		public bool isAppartement
+		{
+			get;
+			set;
+		}
 	}
 }

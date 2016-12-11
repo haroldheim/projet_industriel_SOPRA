@@ -48,6 +48,12 @@ namespace Maps
 			set;
 		}
 
+		public string photo
+		{
+			get;
+			set;
+		}
+
 		public double prix
 		{
 			get;
