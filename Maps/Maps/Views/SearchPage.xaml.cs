@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Maps.Helpers;
 using Xamarin.Forms;
 
 namespace Maps
@@ -13,6 +14,12 @@ namespace Maps
 		Label label;
 		double StepValue;
 		Slider SliderMain;
+		Entry bottomLeft;
+		Entry bottomRight;
+		Entry bottomLeft2;
+		Entry bottomRight2;
+		CustomCheckbox ccbMaison;
+		CustomCheckbox ccbAppartement;
 
 		public SearchPage()
 		{
@@ -29,14 +36,14 @@ namespace Maps
 			};
 			b2.Clicked += OnValiderClicked;
 
-			CustomCheckbox ccbMaison = new CustomCheckbox
+			ccbMaison = new CustomCheckbox
 			{
-				Checked = false,
+				Checked = Settings.isMaison
 			};
 
-			CustomCheckbox ccbAppartement = new CustomCheckbox
+			ccbAppartement = new CustomCheckbox
 			{
-				Checked = false,
+				Checked = Settings.isAppartement
 			};
 
 			var grid = new Grid { Margin = new Thickness(5, 10, 5, 10)};
@@ -46,8 +53,8 @@ namespace Maps
 			grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 			var topLeft = new Label { Text = "Minimum" };
 			var topRight = new Label { Text = "Maximum" };
-			var bottomLeft = new Entry { Placeholder="M²", Keyboard = Keyboard.Numeric };
-			var bottomRight = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric };
+			bottomLeft = new Entry { Placeholder="M²", Keyboard = Keyboard.Numeric , Text= ""+Settings.surfaceMin};
+			bottomRight = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric, Text = "" + Settings.surfaceMax };
 			grid.Children.Add(topLeft, 0, 0);
 			grid.Children.Add(topRight, 1, 0);
 			grid.Children.Add(bottomLeft, 0, 1);
@@ -60,8 +67,8 @@ namespace Maps
 			grid2.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 			var topLeft2 = new Label { Text = "Minimum" };
 			var topRight2 = new Label { Text = "Maximum" };
-			var bottomLeft2 = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric };
-			var bottomRight2 = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric };
+			bottomLeft2 = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric, Text = "" + Settings.prixMin };
+			bottomRight2 = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric, Text = "" + Settings.prixMax };
 			grid2.Children.Add(topLeft2, 0, 0);
 			grid2.Children.Add(topRight2, 1, 0);
 			grid2.Children.Add(bottomLeft2, 0, 1);
@@ -73,14 +80,14 @@ namespace Maps
 			{
 				Maximum = 10.0f,
 				Minimum = 1.0f,
-				Value = 5.0f,
+				Value = Settings.aireRecherche,
 				Margin = new Thickness(20, 0, 20, 0)
 			};
 			SliderMain.ValueChanged += OnSliderValueChanged;
 
 			label = new Label
 			{
-				Text = "5 km",
+				Text = Settings.aireRecherche + " km",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
@@ -165,6 +172,13 @@ namespace Maps
 
 		async void OnValiderClicked(object sender, EventArgs args)
 		{
+			Settings.aireRecherche = SliderMain.Value;
+			Settings.surfaceMin = Double.Parse(bottomLeft.Text);
+			Settings.surfaceMax = Double.Parse(bottomRight.Text);
+			Settings.prixMin = Double.Parse(bottomLeft2.Text);
+			Settings.prixMax = Double.Parse(bottomRight2.Text);
+			Settings.isMaison = (bool)ccbMaison.Checked;
+			Settings.isAppartement = (bool)ccbAppartement.Checked;
 			await Navigation.PopModalAsync();
 		}
 

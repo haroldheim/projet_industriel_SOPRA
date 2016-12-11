@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
+using Maps.Helpers;
 
 namespace Maps
 {
@@ -20,7 +21,6 @@ namespace Maps
 		public MapPage()
         {
 			Debug.WriteLine("MapPage()");
-
             InitializeComponent();
 
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -44,14 +44,18 @@ namespace Maps
 			Debug.WriteLine("OnAppearing()");
 
 			base.OnAppearing();
+			Debug.WriteLine("aireRecherche : " + Settings.aireRecherche);
+
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
 			req.coordLat = 48.685424;
 			req.coordLong = 6.165575;
-			filtre.aireRecherche = 10000;
+			filtre.aireRecherche = 3000;
 			req.filtre = filtre;
 			CarouselBiens.ItemsSource =  App.Database.GetBiensLight();
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight();
+
+			map.Pins.Clear();
 			foreach (var item in listBienMap)
 			{
 				var position = new Position(item.coordLat, item.coordLong);
@@ -60,8 +64,12 @@ namespace Maps
 					Position = position,
 					Label = item.Titre
 				};
+
 				map.Pins.Add(pin);
+				pin.Clicked += (sender, e) => OnPinClicked(item.Id);
+
 			}
+
 		}
 
 		async void  OnFiltreClicked(object sender, EventArgs args)
@@ -71,6 +79,22 @@ namespace Maps
 			await Navigation.PushModalAsync(filtrePage);
 		}
 
+		async void OnPinClicked(int id)
+		{
+			current = id;
+			BienImmo bienRest = new BienImmo();
+			bienRest = await App.BienManager.GetBienAsync(current);
+			App.Database.SaveBienDetailed(bienRest);
+
+			BienImmo bienBdd = new BienImmo();
+			Debug.WriteLine("current :D " + current);
+			bienBdd = App.Database.GetSingleBien(current);
+
+			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
+			var bienPage = new BienPage();
+			bienPage.BindingContext = bienBdd;
+			await Navigation.PushAsync(bienPage);
+		}
 
 
 		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
@@ -83,6 +107,7 @@ namespace Maps
 			Debug.WriteLine("current :D " + current);
 			bienBdd = App.Database.GetSingleBien(current);
 
+			App.Database.displayTable();
 			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage();
 			bienPage.BindingContext = bienBdd;

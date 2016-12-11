@@ -27,8 +27,9 @@
 	          </Grid.RowDefinitions>
 	          <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding sousTitre}">
 			  </Image>
-	          <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-	            <Label TextColor="White" Text="{Binding Titre}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+	          <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="7">
+	            <Label TextColor="White" Text="{Binding typeTitre}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+				<Label TextColor="White" Text="{Binding prixEuro}" FontSize="12" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
 	          </StackLayout>
 				<Grid.GestureRecognizers>
 	              <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"/>

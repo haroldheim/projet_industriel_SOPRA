@@ -59,5 +59,8 @@ namespace Maps
 			get;
 			set;
 		}
+
+		public string typeTitre => string.Format("{0} - {1}", type, Titre);
+		public string prixEuro=> string.Format("{0} € - {1} m²", prix, surface);
 	}
 }
