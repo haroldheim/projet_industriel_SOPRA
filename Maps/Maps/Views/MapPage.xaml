@@ -4,13 +4,13 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 		     xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="Maps.MapPage"
-			 Title="Recherche"
+			 Title="Search"
 			 >
 	<StackLayout Spacing="0">
 		<StackLayout Orientation="Horizontal">
-			<SearchBar WidthRequest="250" Placeholder="Adresse">
+			<SearchBar WidthRequest="250" Placeholder="Address">
 			</SearchBar>
-			<Button Text="Filtrer" Margin="10,0,0,0" Clicked="OnFiltreClicked"/>
+			<Button Text="Filter" Margin="10,0,0,0" Clicked="OnFiltreClicked"/>
 		</StackLayout>
 		<maps:Map WidthRequest="960" HeightRequest="100"
 				x:Name="map"

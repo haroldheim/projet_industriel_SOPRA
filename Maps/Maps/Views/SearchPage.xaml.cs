@@ -25,14 +25,14 @@ namespace Maps
 		{
 			Button b = new Button
 			{
-				Text = "Annuler",
+				Text = "Cancel",
 				Margin = new Thickness(5, 0, 0, 0)
 			};
 			b.Clicked += OnAnnulerClicked;
 
 			Button b2 = new Button
 			{
-				Text = "Valider"
+				Text = "Apply"
 			};
 			b2.Clicked += OnValiderClicked;
 
@@ -102,14 +102,14 @@ namespace Maps
 						Children={
 							new SearchBar{
 								WidthRequest=250,
-								Placeholder="Adresse"
+								Placeholder="Address"
 							},
 							 b
 						}
 					},
 
 					new Label {
-						Text="Type de bien",
+						Text="Type of property",
 						FontAttributes=FontAttributes.Bold,
 						Margin = new Thickness(5, 10, 5, 10)
 					},
@@ -120,7 +120,7 @@ namespace Maps
 						Children={
 							ccbAppartement,
 							new Label {
-								Text="Appartement",
+								Text="Apartment",
 								VerticalOptions = LayoutOptions.CenterAndExpand,
 								HorizontalTextAlignment = TextAlignment.End,
 								VerticalTextAlignment = TextAlignment.Center,
@@ -128,7 +128,7 @@ namespace Maps
 							},
 							ccbMaison,
 							new Label {
-								Text="Maison",
+								Text="House",
 								VerticalOptions = LayoutOptions.CenterAndExpand,
 								HorizontalTextAlignment = TextAlignment.End,
 								VerticalTextAlignment = TextAlignment.Center
@@ -142,7 +142,7 @@ namespace Maps
 					},
 					grid,
 					new Label {
-						Text="Prix",
+						Text="Price",
 						FontAttributes=FontAttributes.Bold,
 						Margin = new Thickness(5, 10, 5, 5)
 					},
@@ -151,7 +151,7 @@ namespace Maps
 						Orientation= StackOrientation.Horizontal,
 						Children={
 							new Label {
-								Text="Aire de recherche",
+								Text="Search area",
 								FontAttributes=FontAttributes.Bold,
 								Margin = new Thickness(5, 10, 5, 10)
 							},
