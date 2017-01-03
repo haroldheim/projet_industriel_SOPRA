@@ -1,24 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Maps.BienPage" Title="Details">
-	<ContentPage.Content>
-		<StackLayout Padding="5" Spacing="0">
-				<Label Text="{Binding Titre}" FontAttributes="Bold"/>
-				<Label Text="{Binding Soustitre}" FontSize="11" Margin="0,0,0,15"/>
-				<Image Source="{Binding Photo}" HeightRequest="150" Margin="0,0,0,15"/>
-				<Label Text="Description" FontAttributes="Bold"/>
-				<StackLayout Orientation="Horizontal">
-					<Label Text="{Binding Surface}"  FontSize="11"/>
-					<Label Text="m²"  FontSize="11" Margin="0,0,0,15"/>
-				</StackLayout>
-				<Label Text="{Binding Description}" Margin="0,0,0,15"/>
-				<Label Text="Address" FontAttributes="Bold" Margin="0,0,0,15"/>
-				<Label Text="{Binding Adresse}" />
-				<StackLayout Orientation="Horizontal">
-					<Label Text="{Binding Ville}" />
-					<Label Text="{Binding Cp}" Margin="0,0,0,15"/>
-				</StackLayout>
-			</StackLayout>
-	</ContentPage.Content>
 	<ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 	</ContentPage.Padding>

@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="Views\CustomCheckbox.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Views\FavoriteCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

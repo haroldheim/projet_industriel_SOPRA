@@ -101,7 +101,7 @@ namespace Maps
 			bienBdd = App.Database.GetSingleBien(current);
 
 			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
-			var bienPage = new BienPage();
+			var bienPage = new BienPage(bienBdd);
 			bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
 		}
@@ -119,8 +119,8 @@ namespace Maps
 
 			App.Database.displayTable();
 			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
-			var bienPage = new BienPage();
-			bienPage.BindingContext = bienBdd;
+			var bienPage = new BienPage(bienBdd);
+			//bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
 
 		}

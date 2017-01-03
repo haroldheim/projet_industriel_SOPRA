@@ -126,6 +126,8 @@
     <BundleResource Include="Resources\loupe.png" />
     <BundleResource Include="Resources\checked.png" />
     <BundleResource Include="Resources\unchecked.png" />
+    <BundleResource Include="Resources\star_marked.png" />
+    <BundleResource Include="Resources\star_unmarked.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">

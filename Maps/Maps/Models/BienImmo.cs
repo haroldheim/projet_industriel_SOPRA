@@ -62,5 +62,11 @@ namespace Maps
 			get;
 			set;
 		}
+
+		public Boolean isFavorite
+		{
+			get;
+			set;
+		}
     }
 }
