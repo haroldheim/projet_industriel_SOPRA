@@ -8,20 +8,24 @@ namespace Maps
 	public partial class BienPage : ContentPage
 	{
 		FavoriteCheck favorites;
+		BienImmo bien;
 
 		public BienPage(BienImmo bien)
 		{
 			InitializeComponent();
-
+			this.bien = bien;
 			favorites = new FavoriteCheck
 			{
-				Checked = true
+				Checked = bien.isFavorite,
+				HorizontalOptions=LayoutOptions.EndAndExpand,
 			};
 
-			StackLayout stackLayout = new StackLayout
+			favorites.Clicked += OnFavClicked;
+
+ 			StackLayout stackLayout = new StackLayout
 			{
 				Spacing = 0,
-				Padding = 5,
+				Padding = 10,
 				Children = {
 					new StackLayout {
 						Orientation=StackOrientation.Horizontal,
@@ -94,8 +98,13 @@ namespace Maps
 
 		async void OnRetourClicked(object sender, EventArgs args)
 		{
-
 			await Navigation.PopModalAsync();
+		}
+
+		void OnFavClicked(object sender, EventArgs args)
+		{
+			bien.isFavorite = !bien.isFavorite;
+			App.Database.SaveBienDetailed(bien);
 		}
 	}
 }

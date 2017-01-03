@@ -98,7 +98,7 @@ namespace Maps
 			{
 				if (GetSingleBien(item.Id) != null)
 				{
-					//Debug.WriteLine(item.Titre + " est deja dans la base");
+					Debug.WriteLine(item.Titre + " est deja dans la base");
 					return database.Update(item);
 				}
 				else
