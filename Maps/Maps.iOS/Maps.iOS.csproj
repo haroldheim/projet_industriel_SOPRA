@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: soufiane10@hotmail.fr (5S39PQ3M36)</CodesignKey>
+    <CodesignKey>iPhone Developer: haroldheim@neuf.fr (FKMLR9E5J9)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
@@ -113,13 +113,10 @@
     <BundleResource Include="Resources\loupe.png" />
     <BundleResource Include="Resources\checked.png" />
     <BundleResource Include="Resources\unchecked.png" />
-<<<<<<< HEAD
     <BundleResource Include="Resources\star_marked.png" />
     <BundleResource Include="Resources\star_unmarked.png" />
-=======
     <BundleResource Include="Resources\FindMyHome.png" />
     <BundleResource Include="Resources\logo.png" />
->>>>>>> 8dd4a277efe37150d39700a3d87a9a80ad0b94e9
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
