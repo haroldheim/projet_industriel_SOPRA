@@ -49,9 +49,6 @@
     </scenes>
     <resources>
         <image name="Icon-60.png" width="60" height="60"/>
-        <image name="Icon-76.png" width="76" height="76"/>
-        <image name="Icon-Small-40.png" width="40" height="40"/>
-        <image name="Icon-Small.png" width="29" height="29"/>
         <image name="today.png" width="24" height="24"/>
         <image name="maps.png" width="24" height="24"/>
         <image name="star.png" width="24" height="24"/>
@@ -61,6 +58,8 @@
         <image name="unchecked.png" width="26" height="26"/>
         <image name="FindMyHome.png" width="500" height="500"/>
         <image name="logo.png" width="50" height="50"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
     </resources>
     <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

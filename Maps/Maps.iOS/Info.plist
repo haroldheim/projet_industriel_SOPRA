@@ -26,21 +26,6 @@
 	<string>com.sopra.Maps</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon-60@2x.png</string>
-		<string>Icon-76.png</string>
-		<string>Icon-76@2x.png</string>
-		<string>Default.png</string>
-		<string>Default@2x.png</string>
-		<string>Default-568h@2x.png</string>
-		<string>Default-Portrait.png</string>
-		<string>Default-Portrait@2x.png</string>
-		<string>Icon-Small-40.png</string>
-		<string>Icon-Small-40@2x.png</string>
-		<string>Icon-Small.png</string>
-		<string>Icon-Small@2x.png</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
@@ -53,5 +38,7 @@
 	<string>Can we use your location</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>
