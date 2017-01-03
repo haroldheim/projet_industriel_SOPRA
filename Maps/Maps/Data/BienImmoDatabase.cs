@@ -28,6 +28,14 @@ namespace Maps
 			}
 		}
 
+		public IEnumerable<BienImmo> GetBiensFavorites()
+		{
+			lock (locker)
+			{
+				return (from i in database.Table<BienImmo>().Where(u =>(u.isFavorite == true)) select i).ToList();
+			}
+		}
+
 		public IEnumerable<BienImmoLight> GetBiensLight(RequestGPSDto req)
 		{
 			String isMaison = "";

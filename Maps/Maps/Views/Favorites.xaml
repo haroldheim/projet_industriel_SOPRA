@@ -2,5 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Maps.Favorites"
 		Title="Favorites">
 	<ContentPage.Content>
+		<ListView x:Name="listView" Margin="20">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+							<Label Text="{Binding Titre}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+							<Image Source="{Binding Photo}" HorizontalOptions="End" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</ContentPage.Content>
 </ContentPage>

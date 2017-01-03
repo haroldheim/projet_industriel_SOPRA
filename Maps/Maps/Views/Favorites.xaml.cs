@@ -11,5 +11,11 @@ namespace Maps
 		{
 			InitializeComponent();
 		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			listView.ItemsSource =  App.Database.GetBiensFavorites();
+		} 
 	}
 }
