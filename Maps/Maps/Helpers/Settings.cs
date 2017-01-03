@@ -40,6 +40,12 @@ namespace Maps.Helpers
 
 	private const string IsAppartementKey = "isAppartement";
 	private static readonly bool IsAppartementDefault = false;
+
+    private const string IsSaleKey = "isSale";
+    private static readonly bool IsSaleDefault = false;
+
+    private const string IsRentalKey = "isRental";
+    private static readonly bool IsRentalDefault = false;
 #endregion
 
 
@@ -79,10 +85,22 @@ namespace Maps.Helpers
 		set { AppSettings.AddOrUpdateValue<bool>(IsAppartementKey, value); }
 	}
 
-	public static bool isMaison
+        public static bool isMaison
+        {
+            get { return AppSettings.GetValueOrDefault<bool>(IsMaisonKey, IsMaisonDefault); }
+            set { AppSettings.AddOrUpdateValue<bool>(IsMaisonKey, value); }
+        }
+
+        public static bool isSale
 	{
-			get { return AppSettings.GetValueOrDefault<bool>(IsMaisonKey, IsMaisonDefault); }
-		set { AppSettings.AddOrUpdateValue<bool>(IsMaisonKey, value); }
+			get { return AppSettings.GetValueOrDefault<bool>(IsSaleKey, IsSaleDefault); }
+		set { AppSettings.AddOrUpdateValue<bool>(IsSaleKey, value); }
 	}
-  }
+
+    public static bool isRental
+    {
+            get { return AppSettings.GetValueOrDefault<bool>(IsRentalKey, IsRentalDefault); }
+            set { AppSettings.AddOrUpdateValue<bool>(IsRentalKey, value); }
+        }
+    }
 }
