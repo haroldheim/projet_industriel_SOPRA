@@ -20,6 +20,8 @@ namespace Maps
 		Entry bottomRight2;
 		CustomCheckbox ccbMaison;
 		CustomCheckbox ccbAppartement;
+        CustomCheckbox ccbSale;
+        CustomCheckbox ccbRental;
 
 		public SearchPage()
 		{
@@ -36,7 +38,18 @@ namespace Maps
 			};
 			b2.Clicked += OnValiderClicked;
 
-			ccbMaison = new CustomCheckbox
+            ccbRental = new CustomCheckbox
+            {
+                Checked = Settings.isRental
+            };
+
+            ccbSale = new CustomCheckbox
+            {
+                Checked = Settings.isSale
+            };
+
+
+            ccbMaison = new CustomCheckbox
 			{
 				Checked = Settings.isMaison
 			};
@@ -93,26 +106,56 @@ namespace Maps
 			};
 
 			InitializeComponent();
-			StackLayout stackLayout = new StackLayout
-			{
-				Spacing = 0,
-				Children = {
-					new StackLayout{
-						Orientation= StackOrientation.Horizontal,
-						Children={
-							new SearchBar{
-								WidthRequest=250,
-								Placeholder="Address"
-							},
-							 b
-						}
-					},
+            StackLayout stackLayout = new StackLayout
+            {
+                Spacing = 0,
+                Children = {
+                    new StackLayout{
+                        Orientation= StackOrientation.Horizontal,
+                        Children={
+                            new SearchBar{
+                                WidthRequest=250,
+                                Placeholder="Address"
+                            },
+                             b
+                        }
+                    },
+                    new Label
+                    {
+                        Text="Type of purchase",
+                        FontAttributes=FontAttributes.Bold,
+                        Margin = new Thickness(5,10,5,10)
+                    },
+                    new StackLayout{
+                        Orientation= StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
+                        Children={
+                            ccbRental,
+                            new Label {
+                                Text="Rental",
+                                VerticalOptions = LayoutOptions.CenterAndExpand,
+                                HorizontalTextAlignment = TextAlignment.End,
+                                VerticalTextAlignment = TextAlignment.Center,
+                                Margin = new Thickness(0, 0, 10, 0)
+                            },
+                            ccbSale,
+                            new Label {
+                                Text="Sale",
+                                VerticalOptions = LayoutOptions.CenterAndExpand,
+                                HorizontalTextAlignment = TextAlignment.End,
+                                VerticalTextAlignment = TextAlignment.Center
+                            }
+                        }
+                    },
 
-					new Label {
+                    new Label {
 						Text="Type of property",
 						FontAttributes=FontAttributes.Bold,
 						Margin = new Thickness(5, 10, 5, 10)
 					},
+
+                  
 					new StackLayout{
 						Orientation= StackOrientation.Horizontal,
 						VerticalOptions = LayoutOptions.Center,
