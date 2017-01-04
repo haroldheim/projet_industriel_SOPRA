@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -239,6 +239,8 @@
     <AndroidResource Include="Resources\drawable\loupe.png" />
     <AndroidResource Include="Resources\drawable\checked.png" />
     <AndroidResource Include="Resources\drawable\unchecked.png" />
+    <AndroidResource Include="Resources\drawable\star_marked.png" />
+    <AndroidResource Include="Resources\drawable\star_unmarked.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
