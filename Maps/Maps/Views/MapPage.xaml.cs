@@ -17,6 +17,7 @@ namespace Maps
     {
 		int current;
 		public IEnumerable<BienImmoLight> BiensImmoLight { get; set; }
+		Geocoder geoCoder;
 
 		public MapPage()
         {
@@ -24,12 +25,20 @@ namespace Maps
             InitializeComponent();
 			refreshDatabase();
 			NavigationPage.SetHasNavigationBar(this, false);
+
+			geoCoder = new Geocoder();
+
 			MoveMapToCurrentPosition();
 			CarouselBiens.ItemSelected += (sender, args) =>
 			{
 			    var zoo = args.SelectedItem as BienImmoLight;
 				current = zoo.Id;
 			};
+		}
+
+		async void MoveMapToPosition(Position position)
+		{
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
 		}
 
 		async void MoveMapToCurrentPosition()
@@ -41,10 +50,8 @@ namespace Maps
 
 		protected async override void OnAppearing()
 		{
-			Debug.WriteLine("OnAppearing()");
 
 			base.OnAppearing();
-			Debug.WriteLine("aireRecherche : " + Settings.aireRecherche);
 			var locator = CrossGeolocator.Current;
 			var position = await locator.GetPositionAsync(10000);
 			RequestGPSDto req = new RequestGPSDto();
@@ -156,6 +163,19 @@ namespace Maps
 
 			}
 			App.Database.displayTable();
+		}
+
+		async void OnGeocodeButtonClicked(object sender, EventArgs e)
+		{
+			if (!string.IsNullOrWhiteSpace(Address.Text))
+			{
+				var address = Address.Text;
+				var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
+				foreach (var position in approximateLocations)
+				{
+					MoveMapToPosition(position);
+				}
+			}
 		}
     }
 }
