@@ -93,7 +93,11 @@ namespace Maps
 					}
 				}
 			};
-			Content = stackLayout;
+
+			Content = new ScrollView
+			{
+				Content = stackLayout
+			};
 		}
 
 		async void OnRetourClicked(object sender, EventArgs args)
