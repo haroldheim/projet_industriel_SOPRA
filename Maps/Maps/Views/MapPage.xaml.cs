@@ -60,6 +60,7 @@ namespace Maps
 			filtre.isAppartement = Settings.isAppartement;
 			req.filtre = filtre;
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
+			Debug.WriteLine("taille liste de biens : " + listBienMap.Count()); 
 			map.Pins.Clear();
 			if (listBienMap.Count() > 0)
 			{

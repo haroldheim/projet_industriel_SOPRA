@@ -44,7 +44,7 @@ namespace Maps
 			if (req.filtre.isMaison)
 				isMaison = "Maison";
 			if (req.filtre.isAppartement)
-				isAppartement = "Appart";
+				isAppartement = "Appartement";
 
 			double earthRadius = 6378137;
 			double latPlus = req.coordLat + (req.filtre.aireRecherche / earthRadius) * (180 / Math.PI);
@@ -92,7 +92,7 @@ namespace Maps
 			{
 				if (GetSingleBienLight(item.Id) != null)
 				{
-					//Debug.WriteLine(item.Titre + " est deja dans la base");
+					Debug.WriteLine(item.Titre + " est deja dans la base");
 					return database.Update(item);
 				}
 				else
