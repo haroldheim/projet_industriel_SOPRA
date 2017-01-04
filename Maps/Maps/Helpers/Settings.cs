@@ -36,10 +36,10 @@ namespace Maps.Helpers
 	private static readonly double PrixMaxDefault = 1000;
 
 	private const string IsMaisonKey = "isMaison";
-	private static readonly bool IsMaisonDefault = true;
+	private static readonly bool IsMaisonDefault = false;
 
 	private const string IsAppartementKey = "isAppartement";
-	private static readonly bool IsAppartementDefault = false;
+	private static readonly bool IsAppartementDefault = true;
 
     private const string IsSaleKey = "isSale";
     private static readonly bool IsSaleDefault = false;

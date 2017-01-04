@@ -22,7 +22,7 @@ namespace Maps
         {
 			Debug.WriteLine("MapPage()");
             InitializeComponent();
-
+			refreshDatabase();
 			NavigationPage.SetHasNavigationBar(this, false);
 			MoveMapToCurrentPosition();
 			CarouselBiens.ItemSelected += (sender, args) =>
@@ -124,6 +124,31 @@ namespace Maps
 			//bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
 
+		}
+
+		public async void refreshDatabase()
+		{
+			var locator = CrossGeolocator.Current;
+			var position = await locator.GetPositionAsync(10000);
+			RequestGPSDto req = new RequestGPSDto();
+			Filtre filtre = new Filtre();
+			req.coordLat = position.Latitude;
+			req.coordLong = position.Longitude;
+			filtre.aireRecherche = Settings.aireRecherche * 1000;
+			req.filtre = filtre;
+			List<BienImmoLight> listBiens = new List<BienImmoLight>();
+			listBiens = await App.BienManager.GetTaskAsync(req);
+
+			Debug.WriteLine("taille : " + listBiens.Count());
+
+			foreach (var item in listBiens)
+			{
+				Debug.WriteLine("item : " + item.sousTitre);
+
+				App.Database.SaveBien(item);
+
+			}
+			App.Database.displayTable();
 		}
     }
 }
