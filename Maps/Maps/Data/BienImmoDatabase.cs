@@ -40,11 +40,17 @@ namespace Maps
 		{
 			String isMaison = "";
 			String isAppartement = "";
+			String isSale = "";
+			String isRental = "";
 
 			if (req.filtre.isMaison)
 				isMaison = "Maison";
 			if (req.filtre.isAppartement)
 				isAppartement = "Appartement";
+			if (req.filtre.isSale)
+				isSale = "Vente";
+			if (req.filtre.isRental)
+				isRental = "Location";
 
 			double earthRadius = 6378137;
 			double latPlus = req.coordLat + (req.filtre.aireRecherche / earthRadius) * (180 / Math.PI);
@@ -59,6 +65,8 @@ namespace Maps
 			{
 				return (from i in database.Table<BienImmoLight>().Where(u=>(u.typeBien == isMaison
 				                                                            || u.typeBien == isAppartement)
+				                                                        && (u.type == isSale
+																			|| u.type == isRental)
 				                                                        && u.coordLat >= latMoins
 				                                                        && u.coordLat <= latPlus
 				                                                        && u.coordLong >= longMoins

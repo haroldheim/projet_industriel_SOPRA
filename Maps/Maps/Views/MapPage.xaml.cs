@@ -58,12 +58,16 @@ namespace Maps
 			filtre.surfaceMin = Settings.surfaceMin;
 			filtre.isMaison = Settings.isMaison;
 			filtre.isAppartement = Settings.isAppartement;
+			filtre.isSale = Settings.isSale;
+			filtre.isRental = Settings.isRental;
+
 			req.filtre = filtre;
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
 			Debug.WriteLine("taille liste de biens : " + listBienMap.Count()); 
 			map.Pins.Clear();
 			if (listBienMap.Count() > 0)
 			{
+				CarouselBiens.IsVisible = true;
 				CarouselBiens.ItemsSource = listBienMap;
 
 				foreach (var item in listBienMap)
@@ -80,6 +84,9 @@ namespace Maps
 					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
 
 				}
+			}
+			else {
+				CarouselBiens.IsVisible = false;
 			}
 		}
 

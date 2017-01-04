@@ -222,6 +222,8 @@ namespace Maps
 			Settings.prixMax = Double.Parse(bottomRight2.Text);
 			Settings.isMaison = (bool)ccbMaison.Checked;
 			Settings.isAppartement = (bool)ccbAppartement.Checked;
+			Settings.isRental = (bool)ccbRental.Checked;
+			Settings.isSale = (bool)ccbSale.Checked;
 			await Navigation.PopModalAsync();
 		}
 

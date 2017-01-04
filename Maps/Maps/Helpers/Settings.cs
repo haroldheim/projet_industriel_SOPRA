@@ -45,7 +45,7 @@ namespace Maps.Helpers
     private static readonly bool IsSaleDefault = false;
 
     private const string IsRentalKey = "isRental";
-    private static readonly bool IsRentalDefault = false;
+    private static readonly bool IsRentalDefault = true;
 #endregion
 
 

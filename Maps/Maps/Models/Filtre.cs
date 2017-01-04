@@ -56,5 +56,17 @@ namespace Maps
 			get;
 			set;
 		}
+
+		public bool isSale
+		{
+			get;
+			set;
+		}
+
+		public bool isRental
+		{
+			get;
+			set;
+		}
 	}
 }
