@@ -20,8 +20,6 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
-	<key>CFBundleDisplayName</key>
-	<string>findMYhome</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.harold-heim.maps</string>
 	<key>CFBundleVersion</key>
@@ -30,8 +28,6 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
-	<key>CFBundleName</key>
-	<string>findMYhome</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We are using your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -40,5 +36,7 @@
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleName</key>
+	<string>FindMyHome</string>
 </dict>
 </plist>

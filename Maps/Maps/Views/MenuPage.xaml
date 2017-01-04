@@ -5,5 +5,9 @@
 	<local:MapPage Icon="loupe.png"/>	
 		</x:Arguments>
 	</NavigationPage>
-	<local:Favorites Icon="star.png"/>
+	<NavigationPage Title="Favorites" Icon="star.png">
+		<x:Arguments>
+		<local:Favorites Icon="star.png"/>
+	</x:Arguments>
+	</NavigationPage>
 </TabbedPage>
