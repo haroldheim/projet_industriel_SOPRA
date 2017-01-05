@@ -18,6 +18,7 @@ namespace Maps
 		int current;
 		public IEnumerable<BienImmoLight> BiensImmoLight { get; set; }
 		Geocoder geoCoder;
+		Position pos;
 
 		public MapPage()
         {
@@ -34,30 +35,73 @@ namespace Maps
 			    var zoo = args.SelectedItem as BienImmoLight;
 				current = zoo.Id;
 			};
+			Debug.WriteLine("fin const");
 		}
 
 		async void MoveMapToPosition(Position position)
 		{
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
+			RequestGPSDto req = new RequestGPSDto();
+			Filtre filtre = new Filtre();
+			req.coordLat = pos.Latitude;
+			req.coordLong = pos.Longitude;
+			filtre.aireRecherche = Settings.aireRecherche * 1000;
+			filtre.prixMax = Settings.prixMax;
+			filtre.prixMin = Settings.prixMin;
+			filtre.surfaceMax = Settings.surfaceMax;
+			filtre.surfaceMin = Settings.surfaceMin;
+			filtre.isMaison = Settings.isMaison;
+			filtre.isAppartement = Settings.isAppartement;
+			filtre.isSale = Settings.isSale;
+			filtre.isRental = Settings.isRental;
+
+			req.filtre = filtre;
+			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
+			Debug.WriteLine("taille liste de biens : " + listBienMap.Count());
+			map.Pins.Clear();
+			if (listBienMap.Count() > 0)
+			{
+				CarouselBiens.IsVisible = true;
+				CarouselBiens.ItemsSource = listBienMap;
+
+				foreach (var item in listBienMap)
+				{
+					var positionPin = new Position(item.coordLat, item.coordLong);
+					var pin = new Pin
+					{
+						Position = positionPin,
+						Label = item.Titre,
+						Address = item.sousTitre
+					};
+
+					map.Pins.Add(pin);
+					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
+
+				}
+			}
+			else {
+				CarouselBiens.IsVisible = false;
+			}
 		}
 
 		async void MoveMapToCurrentPosition()
 		{
 			var locator = CrossGeolocator.Current;
 			var position = await locator.GetPositionAsync(10000);
-			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
+			pos = new Position(position.Latitude, position.Longitude);
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(pos, Distance.FromMiles(1.2)));
 		}
 
 		protected async override void OnAppearing()
 		{
-
+			Debug.WriteLine("OnAppearing()");
 			base.OnAppearing();
 			var locator = CrossGeolocator.Current;
 			var position = await locator.GetPositionAsync(10000);
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
-			req.coordLat = position.Latitude;
-			req.coordLong = position.Longitude;
+			req.coordLat = pos.Latitude;
+			req.coordLong = pos.Longitude;
 			filtre.aireRecherche = Settings.aireRecherche * 1000;
 			filtre.prixMax = Settings.prixMax;
 			filtre.prixMin = Settings.prixMin;
@@ -173,6 +217,7 @@ namespace Maps
 				var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
 				foreach (var position in approximateLocations)
 				{
+					pos = position;
 					MoveMapToPosition(position);
 				}
 			}

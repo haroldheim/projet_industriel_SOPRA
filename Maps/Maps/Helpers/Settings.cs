@@ -27,13 +27,13 @@ namespace Maps.Helpers
 	private static readonly double SurfaceMinDefault = 0;
 
 	private const string SurfaceMaxKey = "surfaceMax";
-	private static readonly double SurfaceMaxDefault = 500;
+	private static readonly double SurfaceMaxDefault = 50;
 
 	private const string PrixMinKey = "prixMin";
 	private static readonly double PrixMinDefault = 0;
 
 	private const string PrixMaxKey = "prixMax";
-	private static readonly double PrixMaxDefault = 1000;
+	private static readonly double PrixMaxDefault = 500;
 
 	private const string IsMaisonKey = "isMaison";
 	private static readonly bool IsMaisonDefault = false;
