@@ -56,6 +56,18 @@ namespace Maps
 			filtre.isRental = Settings.isRental;
 
 			req.filtre = filtre;
+			List<BienImmoLight> listBiens = new List<BienImmoLight>();
+			listBiens = await App.BienManager.GetTaskAsync(req);
+
+			Debug.WriteLine("taille : " + listBiens.Count());
+
+			foreach (var item in listBiens)
+			{
+				Debug.WriteLine("item : " + item.sousTitre);
+
+				App.Database.SaveBien(item);
+
+			}
 			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
 			Debug.WriteLine("taille liste de biens : " + listBienMap.Count());
 			map.Pins.Clear();
