@@ -19,7 +19,11 @@ namespace Maps.Droid
             base.OnCreate(bundle);
             //System.Threading.Thread.Sleep(3000); //Let's wait awhile...
             this.StartActivity(typeof(MainActivity));
+
+            //début du changement
+            
+            //fin du changement
+
         }
     }
 }
-
