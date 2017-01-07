@@ -100,6 +100,8 @@
     <None Include="packages.config" />
     <Compile Include="SQLite_iOS.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="ARPageRenderer.cs" />
+    <Compile Include="ExampleArchitectViewDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -117,6 +119,15 @@
     <BundleResource Include="Resources\star_unmarked.png" />
     <BundleResource Include="Resources\FindMyHome.png" />
     <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\index.html" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\car.png" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\car.wt3" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\rotateButton.png" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\tracker.wtc" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\css\default.css" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\js\interactivity.js" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\4smallwalls.wt3" />
+    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\findmyhome.wtc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
@@ -205,6 +216,9 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
+    <Reference Include="Wikitude.SDK">
+      <HintPath>..\..\Components\com.wikitude.xamarin.component-5.3.0\lib\ios-unified\Wikitude.SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maps\Maps.csproj">
@@ -231,6 +245,12 @@
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="com.wikitude.xamarin.component">
+      <Version>5.3.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

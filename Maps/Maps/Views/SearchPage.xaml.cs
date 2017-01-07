@@ -38,18 +38,18 @@ namespace Maps
 			};
 			b2.Clicked += OnValiderClicked;
 
-            ccbRental = new CustomCheckbox
-            {
-                Checked = Settings.isRental
-            };
+			ccbRental = new CustomCheckbox
+			{
+				Checked = Settings.isRental
+			};
 
-            ccbSale = new CustomCheckbox
-            {
-                Checked = Settings.isSale
-            };
+			ccbSale = new CustomCheckbox
+			{
+				Checked = Settings.isSale
+			};
 
 
-            ccbMaison = new CustomCheckbox
+			ccbMaison = new CustomCheckbox
 			{
 				Checked = Settings.isMaison
 			};
@@ -59,14 +59,14 @@ namespace Maps
 				Checked = Settings.isAppartement
 			};
 
-			var grid = new Grid { Margin = new Thickness(5, 10, 5, 10)};
+			var grid = new Grid { Margin = new Thickness(5, 10, 5, 10) };
 			grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 			grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 			grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 			grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 			var topLeft = new Label { Text = "Minimum" };
 			var topRight = new Label { Text = "Maximum" };
-			bottomLeft = new Entry { Placeholder="M²", Keyboard = Keyboard.Numeric , Text= ""+Settings.surfaceMin};
+			bottomLeft = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric, Text = "" + Settings.surfaceMin };
 			bottomRight = new Entry { Placeholder = "M²", Keyboard = Keyboard.Numeric, Text = "" + Settings.surfaceMax };
 			grid.Children.Add(topLeft, 0, 0);
 			grid.Children.Add(topRight, 1, 0);
@@ -106,56 +106,56 @@ namespace Maps
 			};
 
 			InitializeComponent();
-            StackLayout stackLayout = new StackLayout
-            {
-                Spacing = 0,
-                Children = {
-                    new StackLayout{
-                        Orientation= StackOrientation.Horizontal,
-                        Children={
-                            new SearchBar{
-                                WidthRequest=250,
-                                Placeholder="Address"
-                            },
-                             b
-                        }
-                    },
-                    new Label
-                    {
-                        Text="Type of purchase",
-                        FontAttributes=FontAttributes.Bold,
-                        Margin = new Thickness(5,10,5,10)
-                    },
-                    new StackLayout{
-                        Orientation= StackOrientation.Horizontal,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
-                        Children={
-                            ccbRental,
-                            new Label {
-                                Text="Rental",
-                                VerticalOptions = LayoutOptions.CenterAndExpand,
-                                HorizontalTextAlignment = TextAlignment.End,
-                                VerticalTextAlignment = TextAlignment.Center,
-                                Margin = new Thickness(0, 0, 10, 0)
-                            },
-                            ccbSale,
-                            new Label {
-                                Text="Sale",
-                                VerticalOptions = LayoutOptions.CenterAndExpand,
-                                HorizontalTextAlignment = TextAlignment.End,
-                                VerticalTextAlignment = TextAlignment.Center
-                            }
-                        }
-                    },
+			StackLayout stackLayout = new StackLayout
+			{
+				Spacing = 0,
+				Children = {
+					new StackLayout{
+						Orientation= StackOrientation.Horizontal,
+						Children={
+							new SearchBar{
+								WidthRequest=250,
+								Placeholder="Address"
+							},
+							 b
+						}
+					},
+					new Label
+					{
+						Text="Type of purchase",
+						FontAttributes=FontAttributes.Bold,
+						Margin = new Thickness(5,10,5,10)
+					},
+					new StackLayout{
+						Orientation= StackOrientation.Horizontal,
+						VerticalOptions = LayoutOptions.Center,
+						HorizontalOptions = LayoutOptions.Center,
+						Children={
+							ccbRental,
+							new Label {
+								Text="Rental",
+								VerticalOptions = LayoutOptions.CenterAndExpand,
+								HorizontalTextAlignment = TextAlignment.End,
+								VerticalTextAlignment = TextAlignment.Center,
+								Margin = new Thickness(0, 0, 10, 0)
+							},
+							ccbSale,
+							new Label {
+								Text="Sale",
+								VerticalOptions = LayoutOptions.CenterAndExpand,
+								HorizontalTextAlignment = TextAlignment.End,
+								VerticalTextAlignment = TextAlignment.Center
+							}
+						}
+					},
 
-                    new Label {
+					new Label {
 						Text="Type of property",
 						FontAttributes=FontAttributes.Bold,
 						Margin = new Thickness(5, 10, 5, 10)
 					},
 
-                  
+
 					new StackLayout{
 						Orientation= StackOrientation.Horizontal,
 						VerticalOptions = LayoutOptions.Center,
@@ -205,7 +205,10 @@ namespace Maps
 					b2
 				}
 			};
-			Content = stackLayout;
+			Content = new ScrollView
+			{
+				Content = stackLayout
+			};
 		}
 
 		async void OnAnnulerClicked(object sender, EventArgs args)

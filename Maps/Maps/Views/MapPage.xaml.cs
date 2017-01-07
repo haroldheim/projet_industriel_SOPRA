@@ -191,7 +191,6 @@ namespace Maps
 			App.Database.displayTable();
 			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage(bienBdd);
-			//bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
 
 		}

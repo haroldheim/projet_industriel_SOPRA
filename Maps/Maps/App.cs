@@ -46,7 +46,6 @@ namespace Maps
 
 		protected override void OnStart()
 		{
-			//refreshDatabase();
 		}
 
 

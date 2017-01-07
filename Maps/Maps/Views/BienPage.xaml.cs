@@ -9,6 +9,7 @@ namespace Maps
 	{
 		FavoriteCheck favorites;
 		BienImmo bien;
+		Button button;
 
 		public BienPage(BienImmo bien)
 		{
@@ -21,6 +22,12 @@ namespace Maps
 			};
 
 			favorites.Clicked += OnFavClicked;
+
+			button = new Button
+			{
+				Text = "3D Model"
+			};
+			button.Clicked += On3DModelClicked;
 
  			StackLayout stackLayout = new StackLayout
 			{
@@ -90,7 +97,8 @@ namespace Maps
 								Margin = new Thickness(0,0,0,15)
 							}
 						}
-					}
+					},
+					button
 				}
 			};
 
@@ -109,6 +117,12 @@ namespace Maps
 		{
 			bien.isFavorite = !bien.isFavorite;
 			App.Database.SaveBienDetailed(bien);
+		}
+
+		async void On3DModelClicked(object sender, EventArgs e)
+		{
+			var model = new ARPage("3_3dModels_3_Interactivity");
+			await Navigation.PushAsync(model);
 		}
 	}
 }

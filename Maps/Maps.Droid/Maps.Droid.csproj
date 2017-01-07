@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -210,6 +210,9 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.1.0\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
     </Reference>
+    <Reference Include="Wikitude.SDK">
+      <HintPath>..\..\Components\com.wikitude.xamarin.component-5.3.0\lib\android\Wikitude.SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -221,6 +224,8 @@
     <Compile Include="SQLite_Android.cs" />
     <Compile Include="CustomTabbedPageRenderer.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -241,6 +246,7 @@
     <AndroidResource Include="Resources\drawable\unchecked.png" />
     <AndroidResource Include="Resources\drawable\star_marked.png" />
     <AndroidResource Include="Resources\drawable\star_unmarked.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -255,6 +261,15 @@
       <Project>{f68e2d17-cdcc-4c2e-b151-896cc2c48338}</Project>
       <Name>Maps</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="com.wikitude.xamarin.component">
+      <Version>5.3.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

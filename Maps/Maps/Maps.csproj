@@ -71,6 +71,7 @@
     <Compile Include="Views\CustomCheckbox.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Views\FavoriteCheck.cs" />
+    <Compile Include="Views\ARPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
