@@ -226,6 +226,8 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Utils\Constants.cs" />
+    <Compile Include="ARPageRenderer.cs" />
+    <Compile Include="WikitudeActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -247,6 +249,7 @@
     <AndroidResource Include="Resources\drawable\star_marked.png" />
     <AndroidResource Include="Resources\drawable\star_unmarked.png" />
     <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\layout\sample_cam.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -270,6 +273,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\index.html" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\car.png" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\car.wt3" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\rotateButton.png" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\tracker.wtc" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\css\default.css" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\js\interactivity.js" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\4smallwalls.wt3" />
+    <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\assets\findmyhome.wtc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
