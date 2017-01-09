@@ -58,9 +58,6 @@ namespace Maps
 			double longMoins = req.coordLong - (req.filtre.aireRecherche / (earthRadius * Math.Cos(Math.PI * req.coordLat / 180))) * (180 / Math.PI);
 			double longPlus = req.coordLong + (req.filtre.aireRecherche / (earthRadius * Math.Cos(Math.PI * req.coordLat / 180))) * (180 / Math.PI);
 
-
-			Debug.WriteLine("reqfiltre isMaison : " + req.filtre.surfaceMin);
-			Debug.WriteLine("reqfiltre isAppart : " + req.filtre.surfaceMax);
 			lock (locker)
 			{
 				return (from i in database.Table<BienImmoLight>().Where(u=>(u.typeBien == isMaison

@@ -20,6 +20,9 @@ namespace Maps.Helpers
     }
 
     #region Setting Constants
+	private const string IsModifiedKey = "isModified";
+	private static readonly bool IsModifiedDefault = true;
+
 	private const string AireRechercheKey = "aireRecherche";
 	private static readonly double aireRechercheDefault = 5;
 
@@ -101,6 +104,13 @@ namespace Maps.Helpers
     {
             get { return AppSettings.GetValueOrDefault<bool>(IsRentalKey, IsRentalDefault); }
             set { AppSettings.AddOrUpdateValue<bool>(IsRentalKey, value); }
-        }
     }
+	public static bool isModified
+	{
+			get { return AppSettings.GetValueOrDefault<bool>(IsModifiedKey, IsModifiedDefault); }
+		set { AppSettings.AddOrUpdateValue<bool>(IsModifiedKey, value); }
+	}
+   
+
+}
 }
