@@ -53,9 +53,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Data\IRestService.cs" />
     <Compile Include="Data\RestService.cs" />
-    <Compile Include="Views\ListBiens.xaml.cs">
-      <DependentUpon>ListBiens.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Data\BienManager.cs" />
     <Compile Include="Data\ISQLite.cs" />
     <Compile Include="Data\BienImmoDatabase.cs" />
@@ -163,9 +160,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Favorites.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListBiens.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BienPage.xaml">
