@@ -23,15 +23,14 @@ namespace Maps
 			Title = "Search";
 		}
 
-		public async Task ExecuteGetBiensCommand()
+		public async Task ExecuteGetBiensCommand(Position position)
 		{
 			if (IsBusy)
 				return;
 			
 			IsBusy = true;
 			var showAlert = false;
-			var locator = CrossGeolocator.Current;
-			var position = await locator.GetPositionAsync(10000);
+
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
 			req.coordLat = position.Latitude;
@@ -49,6 +48,8 @@ namespace Maps
 			req.filtre = filtre;
 			try
 			{
+				showAlert = await App.BienManager.CheckWs(req);
+
 				var biens = await App.BienManager.GetTaskAsync(req);
 
 				foreach (var item in biens)
@@ -61,9 +62,9 @@ namespace Maps
 				}
 
 			}
-			catch(Exception ex)
+			catch(Exception e)
 			{
-				showAlert = true;
+				Debug.WriteLine(@"ERROR {0}", e.Message);
 			}
 			finally
 			{
@@ -74,10 +75,10 @@ namespace Maps
 				await page.DisplayAlert("Uh Oh :(", "Unable to gather properties.", "OK");
 		}
 
-		public async Task ExecuteGetBiensSQLite()
+		public async Task ExecuteGetBiensSQLite(Position position)
 		{
 			var locator = CrossGeolocator.Current;
-			var position = await locator.GetPositionAsync(10000);
+			await locator.GetPositionAsync(10000);
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
 			req.coordLat = position.Latitude;
@@ -96,5 +97,7 @@ namespace Maps
 
 			BiensLight = App.Database.GetBiensLight(req);
 		}
+
+
 	}
 }
