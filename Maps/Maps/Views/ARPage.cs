@@ -9,7 +9,7 @@ namespace Maps
 		public ARPage(string worldId)
 		{
 			this.worldId = worldId;
-			this.Title = worldId.Replace("_", " ");
+			this.Title = "3D model";
 		}
 	}
 }
