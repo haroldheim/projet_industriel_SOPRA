@@ -5,23 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Maps.Helpers;
-using Maps.ViewModel;
 using Xamarin.Forms;
 
 namespace Maps
 {
     public class App : Application
     {
-		private static ViewModelLocator _locator;
-
-		public static ViewModelLocator Locator
-		{
-			get
-			{
-				return _locator ?? (_locator = new ViewModelLocator());
-			}
-		}
-
 		public static BienManager BienManager { get; private set;}
 
 		static BienImmoDatabase database;

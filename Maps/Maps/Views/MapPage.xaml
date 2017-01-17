@@ -4,9 +4,21 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 		     xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="Maps.MapPage"
-			 Title="Search"
+			 Title="{Binding Title}"
+			IsBusy="{Binding IsBusy}"
 			 >
 	<StackLayout Spacing="0">
+		<StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+	                <StackLayout.Orientation>
+	                    <OnPlatform x:TypeArguments="StackOrientation" iOS="Horizontal" Android="Horizontal"/>               
+	                </StackLayout.Orientation>
+	                <ActivityIndicator  HorizontalOptions="Center"
+									   IsRunning="{Binding IsBusy}"
+									   IsVisible="{Binding IsBusy}"/>
+	                <Label HorizontalOptions="Center"
+				    	 VerticalOptions="Center"
+				    	 Text="Loading..."/>
+	    </StackLayout>
 		<StackLayout Orientation="Horizontal">
 			<SearchBar WidthRequest="250" Placeholder="Address" x:Name="Address" SearchButtonPressed="OnGeocodeButtonClicked">
 			</SearchBar>
@@ -17,7 +29,7 @@
 				IsShowingUser = "true"
 				VerticalOptions="FillAndExpand"
 		/>
-	  <cv:CarouselView HeightRequest="10" ItemsSource="{Binding BiensImmoLight}" x:Name="CarouselBiens">
+	  <cv:CarouselView HeightRequest="10"  x:Name="CarouselBiens">
 	    <cv:CarouselView.ItemTemplate>
 	      <DataTemplate>
 	        <Grid>

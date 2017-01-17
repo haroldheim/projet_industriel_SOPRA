@@ -8,5 +8,6 @@ namespace Maps
 	{
 		Task<List<BienImmoLight>> RefreshDataAsync(RequestGPSDto requestGPSDto);
 		Task<BienImmo> GetBienImmo(int id);
+		Task<bool> CheckWs(RequestGPSDto requestGPSDto);
 	}
 }

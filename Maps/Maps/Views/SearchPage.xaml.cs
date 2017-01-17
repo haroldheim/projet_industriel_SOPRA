@@ -227,6 +227,7 @@ namespace Maps
 			Settings.isAppartement = (bool)ccbAppartement.Checked;
 			Settings.isRental = (bool)ccbRental.Checked;
 			Settings.isSale = (bool)ccbSale.Checked;
+			Settings.isModified = true;
 			await Navigation.PopModalAsync();
 		}
 

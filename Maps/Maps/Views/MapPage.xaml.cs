@@ -19,217 +19,127 @@ namespace Maps
 		public IEnumerable<BienImmoLight> BiensImmoLight { get; set; }
 		Geocoder geoCoder;
 		Position pos;
+		bool start = true;
+		bool newSearch = false;
+
+		MapPageViewModel viewModel;
 
 		public MapPage()
         {
-			Debug.WriteLine("MapPage()");
             InitializeComponent();
-			refreshDatabase();
-			NavigationPage.SetHasNavigationBar(this, false);
+			BindingContext = viewModel = new MapPageViewModel(this);
 
 			geoCoder = new Geocoder();
 
+			NavigationPage.SetHasNavigationBar(this, false);
+
 			MoveMapToCurrentPosition();
+
 			CarouselBiens.ItemSelected += (sender, args) =>
 			{
 			    var zoo = args.SelectedItem as BienImmoLight;
 				current = zoo.Id;
 			};
-			Debug.WriteLine("fin const");
 		}
 
-		async void MoveMapToPosition(Position position)
+		void MoveMapToPosition(Position position)
 		{
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1.2)));
-			RequestGPSDto req = new RequestGPSDto();
-			Filtre filtre = new Filtre();
-			req.coordLat = pos.Latitude;
-			req.coordLong = pos.Longitude;
-			filtre.aireRecherche = Settings.aireRecherche * 1000;
-			filtre.prixMax = Settings.prixMax;
-			filtre.prixMin = Settings.prixMin;
-			filtre.surfaceMax = Settings.surfaceMax;
-			filtre.surfaceMin = Settings.surfaceMin;
-			filtre.isMaison = Settings.isMaison;
-			filtre.isAppartement = Settings.isAppartement;
-			filtre.isSale = Settings.isSale;
-			filtre.isRental = Settings.isRental;
-
-			req.filtre = filtre;
-			List<BienImmoLight> listBiens = new List<BienImmoLight>();
-			listBiens = await App.BienManager.GetTaskAsync(req);
-
-			Debug.WriteLine("taille : " + listBiens.Count());
-
-			foreach (var item in listBiens)
-			{
-				Debug.WriteLine("item : " + item.sousTitre);
-
-				App.Database.SaveBien(item);
-
-			}
-			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
-			Debug.WriteLine("taille liste de biens : " + listBienMap.Count());
-			map.Pins.Clear();
-			if (listBienMap.Count() > 0)
-			{
-				CarouselBiens.IsVisible = true;
-				CarouselBiens.ItemsSource = listBienMap;
-
-				foreach (var item in listBienMap)
-				{
-					var positionPin = new Position(item.coordLat, item.coordLong);
-					var pin = new Pin
-					{
-						Position = positionPin,
-						Label = item.Titre,
-						Address = item.sousTitre
-					};
-
-					map.Pins.Add(pin);
-					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
-
-				}
-			}
-			else {
-				CarouselBiens.IsVisible = false;
-			}
 		}
 
-		async void MoveMapToCurrentPosition()
+		private async void MoveMapToCurrentPosition()
 		{
 			var locator = CrossGeolocator.Current;
 			var position = await locator.GetPositionAsync(10000);
-			pos = new Position(position.Latitude, position.Longitude);
-			map.MoveToRegion(MapSpan.FromCenterAndRadius(pos, Distance.FromMiles(1.2)));
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
 		}
 
-		protected async override void OnAppearing()
+		private void SetPinsOnMap()
 		{
-			Debug.WriteLine("OnAppearing()");
+			map.Pins.Clear();
+			foreach (var item in viewModel.BiensLight)
+			{
+				var positionPin = new Position(item.coordLat, item.coordLong);
+				var pin = new Pin
+				{
+					Position = positionPin,
+					Label = item.Titre,
+					Address = item.sousTitre
+				};
+
+					map.Pins.Add(pin);
+					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
+			}
+		}
+
+		protected override async void OnAppearing()
+		{
 			base.OnAppearing();
-			var locator = CrossGeolocator.Current;
-			var position = await locator.GetPositionAsync(10000);
-			RequestGPSDto req = new RequestGPSDto();
-			Filtre filtre = new Filtre();
-			req.coordLat = pos.Latitude;
-			req.coordLong = pos.Longitude;
-			filtre.aireRecherche = Settings.aireRecherche * 1000;
-			filtre.prixMax = Settings.prixMax;
-			filtre.prixMin = Settings.prixMin;
-			filtre.surfaceMax = Settings.surfaceMax;
-			filtre.surfaceMin = Settings.surfaceMin;
-			filtre.isMaison = Settings.isMaison;
-			filtre.isAppartement = Settings.isAppartement;
-			filtre.isSale = Settings.isSale;
-			filtre.isRental = Settings.isRental;
 
-			req.filtre = filtre;
-			IEnumerable<BienImmoLight> listBienMap = App.Database.GetBiensLight(req);
-			Debug.WriteLine("taille liste de biens : " + listBienMap.Count()); 
-			map.Pins.Clear();
-			if (listBienMap.Count() > 0)
+			if (start)
 			{
-				CarouselBiens.IsVisible = true;
-				CarouselBiens.ItemsSource = listBienMap;
-
-				foreach (var item in listBienMap)
-				{
-					var positionPin = new Position(item.coordLat, item.coordLong);
-					var pin = new Pin
-					{
-						Position = positionPin,
-						Label = item.Titre,
-						Address = item.sousTitre
-					};
-
-					map.Pins.Add(pin);
-					pin.Clicked += (sender, e) => OnPinClicked(item.Id);
-
-				}
+				var locator = CrossGeolocator.Current;
+				var position = await locator.GetPositionAsync(10000);
+				pos = new Position(position.Latitude, position.Longitude);
+				start = false;
 			}
-			else {
+			if (newSearch || Settings.isModified)
+			{
+				await viewModel.ExecuteGetBiensCommand(pos);
+				Settings.isModified = false;
+				newSearch = false;
+			}
+
+			await viewModel.ExecuteGetBiensSQLite(pos);
+
+			if (viewModel.BiensLight.Count() == 0)
 				CarouselBiens.IsVisible = false;
+			else {
+				CarouselBiens.IsVisible = true;
+				CarouselBiens.ItemsSource = viewModel.BiensLight;
 			}
+				
+			SetPinsOnMap();
 		}
 
 		async void  OnFiltreClicked(object sender, EventArgs args)
 		{
-			
 			var filtrePage = new SearchPage();
 			await Navigation.PushModalAsync(filtrePage);
 		}
 
 		async void OnPinClicked(int id)
 		{
-			current = id;
-			BienImmo bienRest = new BienImmo();
-			bienRest = await App.BienManager.GetBienAsync(current);
-			App.Database.SaveBienDetailed(bienRest);
-
 			BienImmo bienBdd = new BienImmo();
-			Debug.WriteLine("current :D " + current);
-			bienBdd = App.Database.GetSingleBien(current);
+			bienBdd = App.Database.GetSingleBien(id);
 
-			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage(bienBdd);
-			bienPage.BindingContext = bienBdd;
 			await Navigation.PushAsync(bienPage);
 		}
 
 
 		async void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
-			
-			BienImmo bienRest = new BienImmo();
-			bienRest = await App.BienManager.GetBienAsync(current);
-			App.Database.SaveBienDetailed(bienRest);
 
 			BienImmo bienBdd = new BienImmo();
-			Debug.WriteLine("current :D " + current);
 			bienBdd = App.Database.GetSingleBien(current);
 
-			App.Database.displayTable();
-			Debug.WriteLine("bien trouvé : " + bienBdd.Titre);
 			var bienPage = new BienPage(bienBdd);
 			await Navigation.PushAsync(bienPage);
 
-		}
-
-		public async void refreshDatabase()
-		{
-			var locator = CrossGeolocator.Current;
-			var position = await locator.GetPositionAsync(10000);
-			RequestGPSDto req = new RequestGPSDto();
-			Filtre filtre = new Filtre();
-			req.coordLat = position.Latitude;
-			req.coordLong = position.Longitude;
-			filtre.aireRecherche = Settings.aireRecherche * 1000;
-			req.filtre = filtre;
-			List<BienImmoLight> listBiens = new List<BienImmoLight>();
-			listBiens = await App.BienManager.GetTaskAsync(req);
-
-			Debug.WriteLine("taille : " + listBiens.Count());
-
-			foreach (var item in listBiens)
-			{
-				Debug.WriteLine("item : " + item.sousTitre);
-
-				App.Database.SaveBien(item);
-
-			}
-			App.Database.displayTable();
 		}
 
 		async void OnGeocodeButtonClicked(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrWhiteSpace(Address.Text))
 			{
+				newSearch = true;
 				var address = Address.Text;
 				var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
 				foreach (var position in approximateLocations)
 				{
 					pos = position;
 					MoveMapToPosition(position);
+					OnAppearing();
 				}
 			}
 		}

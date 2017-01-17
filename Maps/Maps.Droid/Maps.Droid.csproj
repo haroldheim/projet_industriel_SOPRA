@@ -213,13 +213,14 @@
     <Reference Include="Wikitude.SDK">
       <HintPath>..\..\Components\com.wikitude.xamarin.component-5.3.0\lib\android\Wikitude.SDK.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmHelpers">
+      <HintPath>..\..\packages\Refractored.MvvmHelpers.1.2.0\lib\portable-net45+wp80+win8+wpa81\MvvmHelpers.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="SQLite_Android.cs" />
     <Compile Include="CustomTabbedPageRenderer.cs" />
@@ -273,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Wikitude\3_3dModels_3_Interactivity\index.html" />

@@ -18,6 +18,11 @@ namespace Maps
 			return restService.RefreshDataAsync(req);
 		}
 
+		public Task<bool> CheckWs(RequestGPSDto req)
+		{
+			return restService.CheckWs(req);
+		}
+
 		public Task<BienImmo> GetBienAsync(int id)
 		{
 			return restService.GetBienImmo(id);
