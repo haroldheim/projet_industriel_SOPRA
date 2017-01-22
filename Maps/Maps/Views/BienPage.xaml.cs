@@ -69,12 +69,25 @@ namespace Maps
 							},
 							new Label {
 								Text="m²",
-								FontSize=11,
-								Margin = new Thickness(0,0,0,15)
+								FontSize=11
 							}
 						}
 					},
-					new Label {
+                    new StackLayout {
+                        Orientation=StackOrientation.Horizontal,
+                        Children={
+                            new Label{
+                                Text=""+bien.Prix,
+                                FontSize=11
+                            },
+                            new Label {
+                                Text="€",
+                                FontSize=11,
+                                Margin = new Thickness(0,0,0,15)
+                            }
+                        }
+                    },
+                    new Label {
 						Text=bien.Description,
 						Margin = new Thickness(0,0,0,15)
 					},
@@ -98,6 +111,20 @@ namespace Maps
 							}
 						}
 					},
+                    new Label
+                    {
+                        Text="Contact",
+                        FontAttributes=FontAttributes.Bold,
+                        Margin = new Thickness(0,0,0,15)
+                    },
+                    new Label
+                    {
+                        Text = bien.Telephone
+                    },
+                    new Label
+                    {
+                        Text = bien.Email
+                    },
 					button
 				}
 			};
