@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Maps.Helpers;
 using MvvmHelpers;
+using Plugin.Connectivity;
 using Plugin.Geolocator;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -48,17 +49,25 @@ namespace Maps
 			req.filtre = filtre;
 			try
 			{
-				showAlert = await App.BienManager.CheckWs(req);
+				if (!CrossConnectivity.Current.IsConnected)
+					await page.DisplayAlert("No signal detected", "Only previously loaded properties will be shown.", "OK");
+				else {
+					showAlert = await App.BienManager.CheckWs(req);
 
-				var biens = await App.BienManager.GetTaskAsync(req);
+					if (showAlert)
+						await page.DisplayAlert("Oops, our server seems to be down", "Only previously loaded properties will be shown.", "OK");
+					else {
+						var biens = await App.BienManager.GetTaskAsync(req);
 
-				foreach (var item in biens)
-				{
-					App.Database.SaveBien(item);
-					Debug.WriteLine(item.Id);
-					BienImmo bienRest = new BienImmo();
-					bienRest = await App.BienManager.GetBienAsync(item.Id);
-					App.Database.SaveBienDetailed(bienRest);
+						foreach (var item in biens)
+						{
+							App.Database.SaveBien(item);
+							Debug.WriteLine(item.Id);
+							BienImmo bienRest = new BienImmo();
+							bienRest = await App.BienManager.GetBienAsync(item.Id);
+							App.Database.SaveBienDetailed(bienRest);
+						}
+					}
 				}
 
 			}
@@ -71,8 +80,7 @@ namespace Maps
 				IsBusy = false;
 			}
 
-			if (showAlert)
-				await page.DisplayAlert("Uh Oh :(", "Unable to gather properties.", "OK");
+
 		}
 
 		public async Task ExecuteGetBiensSQLite(Position position)

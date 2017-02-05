@@ -20,7 +20,7 @@
 				    	 Text="Loading..."/>
 	    </StackLayout>
 		<StackLayout Orientation="Horizontal">
-			<SearchBar WidthRequest="250" Placeholder="Address" x:Name="Address" SearchButtonPressed="OnGeocodeButtonClicked">
+			<SearchBar WidthRequest="250" Placeholder="Address" x:Name="Address" TextChanged="MySearchBarOnTextChanged" SearchButtonPressed="OnGeocodeButtonClicked">
 			</SearchBar>
 			<Button Text="Filter" Margin="10,0,0,0" Clicked="OnFiltreClicked"/>
 		</StackLayout>
