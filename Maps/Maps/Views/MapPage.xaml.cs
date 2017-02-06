@@ -21,6 +21,8 @@ namespace Maps
 		Position pos;
 		bool start = true;
 		bool newSearch = false;
+       
+        public int clickedfiltre = 0;
 
 		MapPageViewModel viewModel;
 
@@ -102,10 +104,17 @@ namespace Maps
 			SetPinsOnMap();
 		}
 
+
 		async void  OnFiltreClicked(object sender, EventArgs args)
 		{
-			var filtrePage = new SearchPage();
-			await Navigation.PushModalAsync(filtrePage);
+           
+       
+
+                var filtrePage = new SearchPage();
+                await Navigation.PushAsync(filtrePage);
+           
+      
+
 		}
 
 		async void OnPinClicked(int id)

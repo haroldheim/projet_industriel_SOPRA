@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Maps.Helpers;
 using Xamarin.Forms;
 
+
+
 namespace Maps
 {
 	public partial class SearchPage : ContentPage
@@ -22,6 +24,7 @@ namespace Maps
 		CustomCheckbox ccbAppartement;
         CustomCheckbox ccbSale;
         CustomCheckbox ccbRental;
+        
 
 		public SearchPage()
 		{
@@ -213,7 +216,8 @@ namespace Maps
 
 		async void OnAnnulerClicked(object sender, EventArgs args)
 		{
-			await Navigation.PopModalAsync();
+			await Navigation.PopAsync();
+            
 		}
 
 		async void OnValiderClicked(object sender, EventArgs args)
