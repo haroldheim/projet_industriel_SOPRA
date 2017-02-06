@@ -151,6 +151,26 @@ namespace Maps
 					OnAppearing();
 				}
 			}
+			else {
+				var locator = CrossGeolocator.Current;
+				var position = await locator.GetPositionAsync(10000);
+				pos = new Position(position.Latitude, position.Longitude);
+				MoveMapToPosition(pos);
+				OnAppearing();
+			}
+		}
+
+		async void MySearchBarOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+		{
+			if (textChangedEventArgs.NewTextValue == null)
+			{
+				var locator = CrossGeolocator.Current;
+				var position = await locator.GetPositionAsync(10000);
+				pos = new Position(position.Latitude, position.Longitude);
+				MoveMapToPosition(pos);
+				OnAppearing();
+			}
+
 		}
     }
 }

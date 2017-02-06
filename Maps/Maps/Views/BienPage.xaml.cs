@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace Maps
 {
@@ -10,6 +11,7 @@ namespace Maps
 		FavoriteCheck favorites;
 		BienImmo bien;
 		Button button;
+		Map map;
 
 		public BienPage(BienImmo bien)
 		{
@@ -28,6 +30,24 @@ namespace Maps
 				Text = "3D Model"
 			};
 			button.Clicked += On3DModelClicked;
+
+			map = new Map
+			{
+				HeightRequest = 300,
+				WidthRequest = 960,
+				VerticalOptions = LayoutOptions.FillAndExpand
+			};
+
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(bien.CoordLat, bien.CoordLong), Distance.FromMiles(1.2)));
+
+			var pin = new Pin
+			{
+				Type = PinType.Place,
+				Position = new Position(bien.CoordLat,bien.CoordLong),
+				Label = bien.Titre,
+				Address = bien.Soustitre
+			};
+			map.Pins.Add(pin);
 
  			StackLayout stackLayout = new StackLayout
 			{
@@ -123,8 +143,16 @@ namespace Maps
                     },
                     new Label
                     {
-                        Text = bien.Email
+                        Text = bien.Email,
+						Margin = new Thickness(0,0,0,15)
                     },
+					new Label
+					{
+						Text="Map",
+						FontAttributes=FontAttributes.Bold,
+						Margin = new Thickness(0,0,0,15)
+					},
+					map,
 					button
 				}
 			};

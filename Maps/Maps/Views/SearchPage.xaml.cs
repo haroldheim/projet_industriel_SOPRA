@@ -113,16 +113,7 @@ namespace Maps
 			{
 				Spacing = 0,
 				Children = {
-					new StackLayout{
-						Orientation= StackOrientation.Horizontal,
-						Children={
-							new SearchBar{
-								WidthRequest=250,
-								Placeholder="Address"
-							},
-							 b
-						}
-					},
+					b,
 					new Label
 					{
 						Text="Type of purchase",
