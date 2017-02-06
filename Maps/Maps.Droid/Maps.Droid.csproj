@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -235,6 +235,7 @@
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="ARPageRenderer.cs" />
     <Compile Include="WikitudeActivity.cs" />
+    <Compile Include="CustomTabbedRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

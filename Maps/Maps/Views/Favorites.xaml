@@ -7,8 +7,8 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-							<Label Text="{Binding Titre}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-							<Image Source="{Binding Photo}" HorizontalOptions="End" />
+							<Label Text="{Binding Titre}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" WidthRequest="200"/>
+							<Image Source="{Binding Photo}" HorizontalOptions="End" WidthRequest="50" HeightRequest="60"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

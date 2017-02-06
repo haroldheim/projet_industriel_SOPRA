@@ -28,6 +28,8 @@ namespace Maps
 
 		public SearchPage()
 		{
+			NavigationPage.SetHasNavigationBar(this, false);
+
 			Button b = new Button
 			{
 				Text = "Cancel",
