@@ -23,6 +23,9 @@ namespace Maps.Helpers
 	private const string IsModifiedKey = "isModified";
 	private static readonly bool IsModifiedDefault = true;
 
+	private const string IsDoubleClickedKey = "isDoubleClicked";
+	private static readonly bool isDoubleClickedDefault = true;
+
 	private const string AireRechercheKey = "aireRecherche";
 	private static readonly double aireRechercheDefault = 5;
 
@@ -51,6 +54,12 @@ namespace Maps.Helpers
     private static readonly bool IsRentalDefault = true;
 #endregion
 
+
+	public static bool isDoubleClicked
+	{
+		get { return AppSettings.GetValueOrDefault<bool>(IsDoubleClickedKey, isDoubleClickedDefault); }
+		set { AppSettings.AddOrUpdateValue<bool>(IsDoubleClickedKey, value); }
+	}
 
 	public static double aireRecherche
 	{

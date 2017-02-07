@@ -78,6 +78,8 @@ namespace Maps
 		{
 			base.OnAppearing();
 
+			Settings.isDoubleClicked = true;
+
 			if (start)
 			{
 				var locator = CrossGeolocator.Current;
@@ -107,14 +109,12 @@ namespace Maps
 
 		async void  OnFiltreClicked(object sender, EventArgs args)
 		{
-           
-       
-
-                var filtrePage = new SearchPage();
-                await Navigation.PushAsync(filtrePage);
-           
-      
-
+			if (Settings.isDoubleClicked)
+			{
+				var filtrePage = new SearchPage();
+				await Navigation.PushModalAsync(filtrePage);
+				Settings.isDoubleClicked = false;
+			}
 		}
 
 		async void OnPinClicked(int id)

@@ -209,8 +209,8 @@ namespace Maps
 
 		async void OnAnnulerClicked(object sender, EventArgs args)
 		{
-			await Navigation.PopAsync();
-            
+			Settings.isDoubleClicked = true;
+			await Navigation.PopModalAsync();
 		}
 
 		async void OnValiderClicked(object sender, EventArgs args)
@@ -225,6 +225,8 @@ namespace Maps
 			Settings.isRental = (bool)ccbRental.Checked;
 			Settings.isSale = (bool)ccbSale.Checked;
 			Settings.isModified = true;
+			Settings.isDoubleClicked = true;
+
 			await Navigation.PopModalAsync();
 		}
 
