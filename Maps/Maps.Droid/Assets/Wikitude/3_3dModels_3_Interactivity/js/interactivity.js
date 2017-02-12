@@ -25,7 +25,7 @@ var World = {
 
 			A function is attached to the onLoaded trigger to receive a notification once the 3D model is fully loaded. Depending on the size of the model and where it is stored (locally or remotely) it might take some time to completely load and it is recommended to inform the user about the loading time.
 		*/
-		this.modelCar = new AR.Model("assets/4smallwalls.wt3", {
+		this.modelCar = new AR.Model("assets/4smalltexturedwalls.wt3", {
 			onLoaded: this.loadingStep,
 			/*
 				The drawables are made clickable by setting their onClick triggers. Click triggers can be set in the options of the drawable when the drawable is created. Thus, when the 3D model onClick: this.toggleAnimateModel is set in the options it is then passed to the AR.Model constructor. Similar the button's onClick: this.toggleAnimateModel trigger is set in the options passed to the AR.ImageDrawable constructor. toggleAnimateModel() is therefore called when the 3D model or the button is clicked.
@@ -94,8 +94,8 @@ var World = {
 			var cssDivLeft = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
 			var cssDivRight = " style='display: table-cell;vertical-align: middle; text-align: left;'";
 			document.getElementById('loadingMessage').innerHTML =
-				"<div" + cssDivLeft + ">Scan CarAd ClientTracker Image:</div>" +
-				"<div" + cssDivRight + "><img src='assets/car.png'></img></div>";
+				"<div" + cssDivLeft + ">Scan FindMyHome Logo:</div>" +
+				"<div" + cssDivRight + "><img src='assets/FindMyHome-50x50px.png'></img></div>";
 
 			// Remove Scan target message after 10 sec.
 			setTimeout(function() {

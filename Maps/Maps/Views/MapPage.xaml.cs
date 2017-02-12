@@ -111,9 +111,9 @@ namespace Maps
 		{
 			if (Settings.isDoubleClicked)
 			{
-				var filtrePage = new SearchPage();
+                Settings.isDoubleClicked = false;
+                var filtrePage = new SearchPage();
 				await Navigation.PushModalAsync(filtrePage);
-				Settings.isDoubleClicked = false;
 			}
 		}
 
