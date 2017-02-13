@@ -51,7 +51,7 @@
     <CodesignKey>iPhone Developer: haroldheim@neuf.fr (FKMLR9E5J9)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>5b3e86fb-2caa-4ee0-b1c2-05723069bc32</CodesignProvision>
+    <CodesignProvision>f18d1e40-6ddb-4ea3-9d08-29f8f87a04dc</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -118,16 +118,12 @@
     <BundleResource Include="Resources\star_unmarked.png" />
     <BundleResource Include="Resources\FindMyHome.png" />
     <BundleResource Include="Resources\logo.png" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\index.html" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\car.png" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\car.wt3" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\rotateButton.png" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\tracker.wtc" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\css\default.css" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\js\interactivity.js" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\4smallwalls.wt3" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\findmyhome.wtc" />
-    <BundleResource Include="Resources\3_3dModels_3_Interactivity\assets\4smalltexturedwalls.wt3" />
+    <BundleResource Include="Resources\3DModel\index.html" />
+    <BundleResource Include="Resources\3DModel\css\default.css" />
+    <BundleResource Include="Resources\3DModel\js\interactivity.js" />
+    <BundleResource Include="Resources\3DModel\assets\findmyhome.wtc" />
+    <BundleResource Include="Resources\3DModel\assets\4smalltexturedwalls.wt3" />
+    <BundleResource Include="Resources\3DModel\assets\FindMyHome-50x50px.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
@@ -216,9 +212,6 @@
     <Reference Include="Plugin.Settings">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Wikitude.SDK">
-      <HintPath>..\..\Components\com.wikitude.xamarin.component-5.3.0\lib\ios-unified\Wikitude.SDK.dll</HintPath>
-    </Reference>
     <Reference Include="MvvmHelpers">
       <HintPath>..\..\packages\Refractored.MvvmHelpers.1.2.0\lib\portable-net45+wp80+win8+wpa81\MvvmHelpers.dll</HintPath>
     </Reference>
@@ -227,6 +220,9 @@
     </Reference>
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Wikitude.SDK">
+      <HintPath>..\..\Components\com.wikitude.xamarin.component-6.0.0\lib\ios-unified\Wikitude.SDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -285,7 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="com.wikitude.xamarin.component">
-      <Version>5.3.0</Version>
+      <Version>6.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
