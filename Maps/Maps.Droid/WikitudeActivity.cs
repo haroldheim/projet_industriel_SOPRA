@@ -6,6 +6,7 @@ using Android.Widget;
 using Java.IO;
 using Wikitude.Architect;
 using Wikitude.Tools.Device.Features;
+using Wikitude.Common.Camera;
 
 namespace Maps.Droid
 {
@@ -24,16 +25,23 @@ namespace Maps.Droid
 
 			Title = Intent.GetStringExtra("id");
 
-			//Create path to samples
 			worldUrl = "Wikitude" + File.Separator + Intent.GetStringExtra("id") + File.Separator + "index.html";
 
 			architectView = FindViewById<ArchitectView>(Resource.Id.architectView);
-			StartupConfiguration startupConfiguration = new StartupConfiguration(Constants.WIKITUDE_SDK_KEY, StartupConfiguration.Features.Geo);
+			ArchitectStartupConfiguration startupConfiguration = new ArchitectStartupConfiguration();
+			startupConfiguration.setLicenseKey(Constants.WIKITUDE_SDK_KEY);
+			startupConfiguration.setFeatures(ArchitectStartupConfiguration.Features.Tracking2D);
+			startupConfiguration.setCameraResolution(CameraSettings.CameraResolution.Auto);
 
-			int requiredFeatures = StartupConfiguration.Features.Tracking2D | StartupConfiguration.Features.Geo;
+			/* use  
+			   int requiredFeatures = StartupConfiguration.Features.Tracking2D | StartupConfiguration.Features.Geo;
+			   if you need both 2d Tracking and Geo
+			*/
+			int requiredFeatures = ArchitectStartupConfiguration.Features.Tracking2D;
 			MissingDeviceFeatures missingDeviceFeatures = ArchitectView.isDeviceSupported(this, requiredFeatures);
 
-			if ((ArchitectView.getSupportedFeaturesForDevice(Application.Context) & requiredFeatures) == requiredFeatures)
+
+			if ((ArchitectView.getSupportedFeaturesForDevice(Android.App.Application.Context) & requiredFeatures) == requiredFeatures)
 			{
 				architectView.OnCreate(startupConfiguration);
 				architectView.RegisterUrlListener(this);
