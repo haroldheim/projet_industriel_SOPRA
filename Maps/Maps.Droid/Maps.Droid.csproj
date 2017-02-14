@@ -284,7 +284,6 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Wikitude\3DModel\.DS_Store" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\index.html" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\assets\.DS_Store" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\assets\4smalltexturedwalls.wt3" />
