@@ -285,7 +285,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Wikitude\3DModel\index.html" />
-    <AndroidAsset Include="Assets\Wikitude\3DModel\assets\.DS_Store" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\assets\4smalltexturedwalls.wt3" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\assets\FindMyHome-50x50px.png" />
     <AndroidAsset Include="Assets\Wikitude\3DModel\assets\findmyhome.wtc" />
