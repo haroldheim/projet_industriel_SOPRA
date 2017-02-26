@@ -25,7 +25,7 @@ namespace Maps.Droid
 
 			Title = Intent.GetStringExtra("id");
 
-			worldUrl = "Wikitude" + File.Separator + Intent.GetStringExtra("id") + File.Separator + "index.html";
+			worldUrl = "Wikitude" + File.Separator + Intent.GetStringExtra("id") + File.Separator + "index.html?id=1";
 
 			architectView = FindViewById<ArchitectView>(Resource.Id.architectView);
 			ArchitectStartupConfiguration startupConfiguration = new ArchitectStartupConfiguration();

@@ -139,38 +139,25 @@ namespace Maps
 
 		async void OnGeocodeButtonClicked(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrWhiteSpace(Address.Text))
+			newSearch = true;
+			var address = Address.Text;
+			var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
+			foreach (var position in approximateLocations)
 			{
-				newSearch = true;
-				var address = Address.Text;
-				var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
-				foreach (var position in approximateLocations)
-				{
-					pos = position;
-					MoveMapToPosition(position);
-					OnAppearing();
-				}
-			}
-			else {
-				var locator = CrossGeolocator.Current;
-				var position = await locator.GetPositionAsync(10000);
-				pos = new Position(position.Latitude, position.Longitude);
-				MoveMapToPosition(pos);
+				pos = position;
+				MoveMapToPosition(position);
 				OnAppearing();
 			}
 		}
 
-		async void MySearchBarOnTextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+		async void OnGeoLocationButtonClicked(object sender, EventArgs e)
 		{
-			if (textChangedEventArgs.NewTextValue == null)
-			{
-				var locator = CrossGeolocator.Current;
-				var position = await locator.GetPositionAsync(10000);
-				pos = new Position(position.Latitude, position.Longitude);
-				MoveMapToPosition(pos);
-				OnAppearing();
-			}
-
+			var locator = CrossGeolocator.Current;
+			var position = await locator.GetPositionAsync(10000);
+			pos = new Position(position.Latitude, position.Longitude);
+			MoveMapToPosition(pos);
+			OnAppearing();
 		}
+
     }
 }

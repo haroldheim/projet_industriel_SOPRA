@@ -1,3 +1,5 @@
+//window.location.search.substr(1)
+
 var World = {
 	loaded: false,
 	rotating: false,

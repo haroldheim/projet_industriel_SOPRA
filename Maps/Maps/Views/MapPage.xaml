@@ -19,16 +19,25 @@
 				    	 VerticalOptions="Center"
 				    	 Text="Loading..."/>
 	    </StackLayout>
-		<StackLayout Orientation="Horizontal">
-			<SearchBar WidthRequest="250" Placeholder="Address" x:Name="Address" TextChanged="MySearchBarOnTextChanged" SearchButtonPressed="OnGeocodeButtonClicked">
+		
+		<Grid>
+		  <Grid.ColumnDefinitions>
+		    <ColumnDefinition Width="*" />
+		    <ColumnDefinition Width="25" />
+			<ColumnDefinition Width="60" />
+		  </Grid.ColumnDefinitions>
+		  	<SearchBar Grid.Column="0" Placeholder="Address" x:Name="Address" SearchButtonPressed="OnGeocodeButtonClicked">
 			</SearchBar>
-			<Button Text="Filter" Margin="10,0,0,0" Clicked="OnFiltreClicked"/>
-		</StackLayout>
+		  <Button Grid.Column="1" Image="location.png" Clicked="OnGeoLocationButtonClicked" />
+		  <Button Grid.Column="2" Text="Filter" Clicked="OnFiltreClicked"/>
+		</Grid>
+		
 		<maps:Map WidthRequest="960" HeightRequest="100"
 				x:Name="map"
 				IsShowingUser = "true"
 				VerticalOptions="FillAndExpand"
 		/>
+		
 	  <cv:CarouselView HeightRequest="10"  x:Name="CarouselBiens">
 	    <cv:CarouselView.ItemTemplate>
 	      <DataTemplate>

@@ -122,8 +122,9 @@
     <BundleResource Include="Resources\3DModel\css\default.css" />
     <BundleResource Include="Resources\3DModel\js\interactivity.js" />
     <BundleResource Include="Resources\3DModel\assets\findmyhome.wtc" />
-    <BundleResource Include="Resources\3DModel\assets\4smalltexturedwalls.wt3" />
     <BundleResource Include="Resources\3DModel\assets\FindMyHome-50x50px.png" />
+    <BundleResource Include="Resources\3DModel\assets\appartement2.wt3" />
+    <BundleResource Include="Resources\location.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
