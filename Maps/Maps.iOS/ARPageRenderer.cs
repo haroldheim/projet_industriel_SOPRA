@@ -10,7 +10,7 @@ namespace Maps.iOS
 {
 	public class ARPageRenderer : PageRenderer
 	{
-		string worldId;
+		int worldId;
 		WTArchitectView architectView;
 		WTNavigation navigation;
 		ExampleArchitectViewDelegate architectViewDelegate = new ExampleArchitectViewDelegate();
@@ -20,7 +20,7 @@ namespace Maps.iOS
 			base.OnElementChanged(e);
 			var page = e.NewElement as ARPage;
 			worldId = page.worldId;
-			this.Title = worldId;
+			this.Title = "3d model";
 		}
 
 		public override void ViewDidLoad()
@@ -51,7 +51,7 @@ namespace Maps.iOS
 				StopAR();
 			});
 
-			var path = NSBundle.MainBundle.BundleUrl.AbsoluteString + worldId + "/index.html";
+			var path = NSBundle.MainBundle.BundleUrl.AbsoluteString + "3DModel/index.html?id=" + worldId;
 			navigation = architectView.LoadArchitectWorldFromURL(NSUrl.FromString(path), WTFeatures.Geo);
 		}
 

@@ -1,3 +1,16 @@
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+    .substr(1)
+        .split("&")
+        .forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    });
+    return result;
+}
+
 var World = {
 	loaded: false,
 	rotating: false,
@@ -32,7 +45,9 @@ var World = {
 
 			A function is attached to the onLoaded trigger to receive a notification once the 3D model is fully loaded. Depending on the size of the model and where it is stored (locally or remotely) it might take some time to completely load and it is recommended to inform the user about the loading time.
 		*/
-		this.modelCar = new AR.Model("assets/appartement2.wt3", {
+
+		var model = findGetParameter("id");
+		this.modelCar = new AR.Model("http://findmyhomeapp.westeurope.cloudapp.azure.com/api/get3dmodel/" + model, {
 			onLoaded: this.loadingStep,
 			scale: {
 				x: 0.045,
