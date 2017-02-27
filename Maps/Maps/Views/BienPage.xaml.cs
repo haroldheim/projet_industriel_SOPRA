@@ -176,7 +176,7 @@ namespace Maps
 
 		async void On3DModelClicked(object sender, EventArgs e)
 		{
-			var model = new ARPage(bien.Id);
+			var model = new ARPage("3DModel");
 			await Navigation.PushAsync(model);
 		}
 	}

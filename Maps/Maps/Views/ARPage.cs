@@ -4,9 +4,9 @@ namespace Maps
 {
 	public class ARPage : ContentPage
 	{
-		public int worldId;
+		public string worldId;
 
-		public ARPage(int worldId)
+		public ARPage(string worldId)
 		{
 			this.worldId = worldId;
 			this.Title = "3D model";
