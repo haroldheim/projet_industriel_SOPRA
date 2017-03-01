@@ -24,7 +24,7 @@
 		  <Grid.ColumnDefinitions>
 		    <ColumnDefinition Width="*" />
 		    <ColumnDefinition Width="25" />
-			<ColumnDefinition Width="60" />
+			<ColumnDefinition Width="80" />
 		  </Grid.ColumnDefinitions>
 		  	<SearchBar Grid.Column="0" Placeholder="Address" x:Name="Address" SearchButtonPressed="OnGeocodeButtonClicked">
 			</SearchBar>

@@ -23,9 +23,9 @@ namespace Maps.Droid
 
 			SetContentView(Resource.Layout.sample_cam);
 
-			Title = Intent.GetStringExtra("id");
+			Title = "3d model";
 
-			worldUrl = "Wikitude" + File.Separator + Intent.GetStringExtra("id") + File.Separator + "index.html";
+			worldUrl = "Wikitude/3DModel/index.html";
 
 			architectView = FindViewById<ArchitectView>(Resource.Id.architectView);
 			ArchitectStartupConfiguration startupConfiguration = new ArchitectStartupConfiguration();
@@ -104,6 +104,7 @@ namespace Maps.Droid
 				try
 				{
 					architectView.Load(worldUrl);
+					architectView.CallJavascript("chargeModel('" + Intent.GetIntExtra("id", 0) + "')");
 				}
 				catch (Exception ex)
 				{
