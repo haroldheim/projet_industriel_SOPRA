@@ -77,7 +77,7 @@ var World = {
 	loadingStep: function loadingStepFn() {
 		if (!World.loaded && World.resourcesLoaded && World.modelCar.isLoaded()) {
 			World.loaded = true;
-			var cssDivLeft = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
+			var cssDivLeft = " style='display: table-cell;vertical-align: middle;  width: 80%; padding-right: 15px;'";
 			var cssDivRight = " style='display: table-cell;vertical-align: middle; text-align: left;'";
 			document.getElementById('loadingMessage').innerHTML =
                 "<div" + cssDivLeft + ">Scan FindMyHome Logo:</div>" +

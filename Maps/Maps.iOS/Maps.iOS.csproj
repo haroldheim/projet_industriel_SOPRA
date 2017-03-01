@@ -51,7 +51,7 @@
     <CodesignKey>iPhone Developer: haroldheim@neuf.fr (FKMLR9E5J9)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>f18d1e40-6ddb-4ea3-9d08-29f8f87a04dc</CodesignProvision>
+    <CodesignProvision>04ac2bc3-8183-4384-8e0f-ccb68f408949</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>

@@ -32,13 +32,13 @@
 	<string>We are using your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Can we use your location</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>FindMyHome</string>
 	<key>NSCameraUsageDescription</key>
 	<string>camera</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>
