@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -176,8 +177,19 @@ namespace Maps
 
 		async void On3DModelClicked(object sender, EventArgs e)
 		{
-			var model = new ARPage(bien.Id);
-			await Navigation.PushAsync(model);
+			var showAlert = false;
+			RequestGPSDto req = new RequestGPSDto();
+			showAlert = await App.BienManager.CheckWs(req);
+
+			if (!CrossConnectivity.Current.IsConnected)
+				await DisplayAlert("No signal detected", "This feature only works if you can reach the Internet.", "OK");
+			else if (showAlert){
+				await DisplayAlert("Oops, our server seems to be down", "Please come back later, you will certainly be able to download the 3D model.", "OK");
+			}
+			else {
+				var model = new ARPage(bien.Id);
+				await Navigation.PushAsync(model);
+			}
 		}
 	}
 }
