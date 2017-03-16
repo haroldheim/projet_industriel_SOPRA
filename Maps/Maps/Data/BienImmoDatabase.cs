@@ -97,7 +97,6 @@ namespace Maps
 			{
 				if (GetSingleBienLight(item.Id) != null)
 				{
-					Debug.WriteLine(item.Titre + " est deja dans la base");
 					return database.Update(item);
 				}
 				else
@@ -111,7 +110,9 @@ namespace Maps
 			{
 				if (GetSingleBien(item.Id) != null)
 				{
-					Debug.WriteLine(item.Titre + " est deja dans la base");
+					if (GetSingleBien(item.Id).isFavorite)
+						item.isFavorite = true;
+					
 					return database.Update(item);
 				}
 				else

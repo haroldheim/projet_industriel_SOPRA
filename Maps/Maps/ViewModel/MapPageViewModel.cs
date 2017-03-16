@@ -85,8 +85,6 @@ namespace Maps
 
 		public async Task ExecuteGetBiensSQLite(Position position)
 		{
-			var locator = CrossGeolocator.Current;
-			await locator.GetPositionAsync(10000);
 			RequestGPSDto req = new RequestGPSDto();
 			Filtre filtre = new Filtre();
 			req.coordLat = position.Latitude;

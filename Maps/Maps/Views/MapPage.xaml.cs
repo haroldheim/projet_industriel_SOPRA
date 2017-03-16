@@ -21,7 +21,7 @@ namespace Maps
 		Position pos;
 		bool start = true;
 		bool newSearch = false;
-       
+
         public int clickedfiltre = 0;
 
 		MapPageViewModel viewModel;
@@ -35,7 +35,14 @@ namespace Maps
 
 			NavigationPage.SetHasNavigationBar(this, false);
 
-			MoveMapToCurrentPosition();
+			var locator = CrossGeolocator.Current;
+
+			if (locator.IsGeolocationEnabled)
+				MoveMapToCurrentPosition();
+			else {
+				MoveMapToFrance();
+			}
+
 
 			CarouselBiens.ItemSelected += (sender, args) =>
 			{
@@ -54,6 +61,11 @@ namespace Maps
 			var locator = CrossGeolocator.Current;
 			var position = await locator.GetPositionAsync(10000);
 			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1.2)));
+		}
+
+		private void MoveMapToFrance()
+		{
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(46.880169, 2.659286), Distance.FromMiles(300)));
 		}
 
 		private void SetPinsOnMap()
@@ -79,12 +91,20 @@ namespace Maps
 			base.OnAppearing();
 
 			Settings.isDoubleClicked = true;
+			Debug.WriteLine("avant start");
 
 			if (start)
 			{
 				var locator = CrossGeolocator.Current;
-				var position = await locator.GetPositionAsync(10000);
-				pos = new Position(position.Latitude, position.Longitude);
+
+				if (locator.IsGeolocationEnabled)
+				{
+					var position = await locator.GetPositionAsync(10000);
+					pos = new Position(position.Latitude, position.Longitude);
+				}
+				else {
+					await DisplayAlert("Geolocation is disabled", "Please enable geolocation to gather properties around you !", "OK");
+				}
 				start = false;
 			}
 			if (newSearch || Settings.isModified)
@@ -153,10 +173,16 @@ namespace Maps
 		async void OnGeoLocationButtonClicked(object sender, EventArgs e)
 		{
 			var locator = CrossGeolocator.Current;
-			var position = await locator.GetPositionAsync(10000);
-			pos = new Position(position.Latitude, position.Longitude);
-			MoveMapToPosition(pos);
-			OnAppearing();
+			if (locator.IsGeolocationEnabled)
+			{
+				var position = await locator.GetPositionAsync(10000);
+				pos = new Position(position.Latitude, position.Longitude);
+				MoveMapToPosition(pos);
+				OnAppearing();
+			}
+			else {
+				await DisplayAlert("Geolocation is disabled", "Please enable geolocation to center on your position !", "OK");
+			}
 		}
 
     }

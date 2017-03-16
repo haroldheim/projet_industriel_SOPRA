@@ -47,7 +47,7 @@ var World = {
 		*/
 
 		var model = findGetParameter("id");
-		this.modelCar = new AR.Model("http://findmyhomeapp.westeurope.cloudapp.azure.com/api/get3dmodel/" + model, {
+		this.modelCar = new AR.Model("http://findmyhomesopra.westeurope.cloudapp.azure.com/api/get3dmodel/" + model, {
 			onLoaded: this.loadingStep,
 			scale: {
 				x: 0.045,
