@@ -95,6 +95,8 @@ namespace Maps
 
 			if (start)
 			{
+				start = false;
+
 				var locator = CrossGeolocator.Current;
 
 				if (locator.IsGeolocationEnabled)
@@ -105,7 +107,7 @@ namespace Maps
 				else {
 					await DisplayAlert("Geolocation is disabled", "Please enable geolocation to gather properties around you !", "OK");
 				}
-				start = false;
+
 			}
 			if (newSearch || Settings.isModified)
 			{
