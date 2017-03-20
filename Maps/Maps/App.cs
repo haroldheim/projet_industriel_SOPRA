@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Maps.Helpers;
+using Plugin.Geolocator;
 using Xamarin.Forms;
 
 namespace Maps

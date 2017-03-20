@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Plugin.Geolocator;
 using Maps.Helpers;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace Maps
 {
@@ -20,6 +22,7 @@ namespace Maps
 		Geocoder geoCoder;
 		Position pos;
 		bool start = true;
+		bool startSearch = true;
 		bool newSearch = false;
 
         public int clickedfiltre = 0;
@@ -34,15 +37,6 @@ namespace Maps
 			geoCoder = new Geocoder();
 
 			NavigationPage.SetHasNavigationBar(this, false);
-
-			var locator = CrossGeolocator.Current;
-
-			if (locator.IsGeolocationEnabled)
-				MoveMapToCurrentPosition();
-			else {
-				MoveMapToFrance();
-			}
-
 
 			CarouselBiens.ItemSelected += (sender, args) =>
 			{
@@ -96,23 +90,47 @@ namespace Maps
 			{
 				start = false;
 
-				var locator = CrossGeolocator.Current;
-
-				if (locator.IsGeolocationEnabled)
+				try
 				{
-					var position = await locator.GetPositionAsync(10000);
-					pos = new Position(position.Latitude, position.Longitude);
-				}
-				else {
-					await DisplayAlert("Geolocation is disabled", "Please enable geolocation to gather properties around you !", "OK");
-				}
+					var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+					if (status != PermissionStatus.Granted)
+					{
+						if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+						{
+							await DisplayAlert("Need location", "Gunna need that location", "OK");
+						}
 
+						var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
+						status = results[Permission.Location];
+					}
+
+					if (status == PermissionStatus.Granted)
+					{
+						var locator = CrossGeolocator.Current;
+						var position = await locator.GetPositionAsync(10000);
+						pos = new Position(position.Latitude, position.Longitude);
+
+						MoveMapToCurrentPosition();
+						
+					}
+					else if (status != PermissionStatus.Unknown)
+					{
+						MoveMapToFrance();
+						await DisplayAlert("Location Denied", "Please enable geolocation to gather properties around you !", "OK");
+					}
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
-			if (newSearch || Settings.isModified)
+
+			if (startSearch || newSearch || Settings.isModified)
 			{
 				await viewModel.ExecuteGetBiensCommand(pos);
 				Settings.isModified = false;
 				newSearch = false;
+				startSearch = false;
 			}
 
 			await viewModel.ExecuteGetBiensSQLite(pos);
