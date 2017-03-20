@@ -89,7 +89,11 @@ namespace Maps
 			if (start)
 			{
 				start = false;
-
+				if (!CrossGeolocator.Current.IsGeolocationEnabled)
+				{
+					MoveMapToFrance();
+					await DisplayAlert("Location disabled", "Please enable geolocation to gather properties around your location", "OK");
+				}
 				try
 				{
 					var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
@@ -111,18 +115,19 @@ namespace Maps
 						pos = new Position(position.Latitude, position.Longitude);
 
 						MoveMapToCurrentPosition();
-						
+
 					}
 					else if (status != PermissionStatus.Unknown)
 					{
+						startSearch = false;
 						MoveMapToFrance();
-						await DisplayAlert("Location Denied", "Please enable geolocation to gather properties around you !", "OK");
 					}
 				}
 				catch (Exception ex)
 				{
 
 				}
+		
 			}
 
 			if (startSearch || newSearch || Settings.isModified)

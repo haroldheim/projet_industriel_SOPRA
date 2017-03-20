@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
+using Plugin.Permissions;
 
 namespace Maps.Droid
 {
@@ -32,6 +33,11 @@ namespace Maps.Droid
             global::Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App());
         }
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+		}
     }
 }
 
