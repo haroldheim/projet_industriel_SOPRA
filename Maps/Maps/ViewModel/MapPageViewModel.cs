@@ -62,7 +62,6 @@ namespace Maps
 						foreach (var item in biens)
 						{
 							App.Database.SaveBien(item);
-							Debug.WriteLine(item.Id);
 							BienImmo bienRest = new BienImmo();
 							bienRest = await App.BienManager.GetBienAsync(item.Id);
 							App.Database.SaveBienDetailed(bienRest);

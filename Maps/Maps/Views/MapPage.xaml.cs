@@ -91,7 +91,6 @@ namespace Maps
 			base.OnAppearing();
 
 			Settings.isDoubleClicked = true;
-			Debug.WriteLine("avant start");
 
 			if (start)
 			{
